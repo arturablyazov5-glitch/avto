@@ -181,26 +181,30 @@ ul,ol{margin:0;padding:0;list-style:none}
 @media (min-width:992px){.nav{display:flex}}
 
 /* ===== Hero ===== */
-.hero{padding-block:32px var(--sp)}
-.hero__grid{display:grid;gap:32px}
+.hero{padding-block:16px var(--sp)}
+.hero__grid{display:grid;gap:16px}
 .rating{display:inline-flex;align-items:center;min-height:44px;margin-bottom:12px;color:var(--fg-2);font-size:15px;text-decoration:none}
 .rating:hover{text-decoration:underline}
 .rating b{color:var(--fg);margin-right:6px}
 .h1__name{display:block;font-size:17px;font-weight:600;color:var(--muted);margin-bottom:10px;letter-spacing:0}
 .hero h1{font-size:clamp(30px,7.4vw,50px);margin-bottom:16px}
-.hero__sub{color:var(--fg-2);font-size:18px;max-width:44ch;margin-bottom:22px}
-.hero__prices{display:flex;flex-wrap:wrap;gap:12px 32px;margin-bottom:26px}
+.hero__sub{color:var(--fg-2);font-size:17px;max-width:44ch;margin-bottom:22px}
+.hero__prices{display:flex;flex-wrap:wrap;gap:10px 22px;margin-bottom:22px}
 .hero__prices li{display:grid;gap:2px}
 .hero__prices span{font-size:15px;color:var(--muted)}
-.hero__prices b{font-size:20px;white-space:nowrap}
-.hero__ctas{display:flex;flex-wrap:wrap;gap:12px}
-.hero__ctas .btn{flex:1 1 180px}
+.hero__prices b{font-size:18px;white-space:nowrap}
+@media (min-width:768px){.hero__prices{gap:12px 36px}.hero__prices b{font-size:21px}}
+.hero__ctas{display:flex;gap:10px}
+.hero__ctas .btn{flex:1 1 0;padding-inline:12px}
 .hero__addr{margin-top:20px;color:var(--muted);font-size:16px}
-.hero__media img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:var(--r)}
-@media (min-width:480px){.hero__ctas .btn{flex:0 0 auto}}
+.hero__media{order:-1}
+.hero__media img{width:100%;aspect-ratio:2/1;object-fit:cover;object-position:50% 55%;border-radius:var(--r)}
+@media (min-width:768px){.hero__media img{aspect-ratio:16/9}}
+@media (min-width:480px){.hero__ctas .btn{flex:0 0 auto;padding-inline:24px}}
 @media (min-width:992px){
   .hero{padding-top:56px}
   .hero__grid{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:56px;align-items:center}
+  .hero__media{order:0}
   .hero__media img{aspect-ratio:4/5;max-height:calc(100vh - var(--header-h) - 96px);min-height:480px}
 }
 
