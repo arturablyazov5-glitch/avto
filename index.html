@@ -165,11 +165,10 @@ ul,ol{margin:0;padding:0;list-style:none}
 .btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:14px 26px;border-radius:12px;
   font:700 17px/1.1 var(--text);text-decoration:none;border:2px solid transparent;cursor:pointer;
   transition:background-color .2s var(--ease),border-color .2s var(--ease),color .2s var(--ease),transform .15s var(--ease),box-shadow .2s var(--ease)}
-.lg-plate{display:inline-flex;align-items:center;justify-content:center;flex:none;width:30px;height:30px;border-radius:50%;background:#fff;box-shadow:0 0 0 1px rgba(0,0,0,.08)}
-.lg-plate img{width:22px;height:22px;display:block}
+.lg--b{flex:none;width:22px;height:22px;border-radius:24%;display:block}
 .lg-fb{display:none;font-weight:700;font-size:15px}
-.lg-off .lg-plate{display:none}.lg-off .lg-fb{display:inline}
-.lg--s{display:inline-block;width:1.1em;height:1.1em;vertical-align:-.2em;margin-right:.4em}.lg--s[hidden]{display:none}
+.lg-off .lg-fb{display:inline}
+.lg--b[hidden]{display:none}.lg--s{border-radius:24%;display:inline-block;width:1.1em;height:1.1em;vertical-align:-.2em;margin-right:.4em}.lg--s[hidden]{display:none}
 .btn:active{transform:translateY(1px) scale(.99)}
 .btn--primary{background:var(--accent);color:var(--on-accent);box-shadow:0 8px 24px -10px rgba(46,196,207,.7)}
 .btn--primary:hover{background:var(--accent-2);box-shadow:0 12px 30px -10px rgba(46,196,207,.85)}
@@ -836,7 +835,7 @@ ul,ol{margin:0;padding:0;list-style:none}
           <a class="vid__alt" href="https://yandex.ru/maps/org/vibrostend_garazh_moll/205484445084/gallery/" target="_blank" rel="noopener">Смотреть на Яндекс Картах</a>
         </li>
       </ul>
-      <a class="btn btn--ghost work__more" href="https://yandex.ru/maps/org/vibrostend_garazh_moll/205484445084/gallery/" target="_blank" rel="noopener"><span class="lg-plate" aria-hidden="true"><img src="https://trace-logos.ru/assets/logos/svgs/yandex-maps.svg" alt="" width="22" height="22" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.closest('a').classList.add('lg-off')"></span>Все фото и видео на Яндекс Картах<svg class="ico ico-arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      <a class="btn btn--ghost work__more" href="https://yandex.ru/maps/org/vibrostend_garazh_moll/205484445084/gallery/" target="_blank" rel="noopener"><img class="lg lg--b" src="https://trace-logos.ru/assets/logos/svgs/yandex-maps.svg" alt="" aria-hidden="true" width="22" height="22" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.hidden=true;this.closest('a').classList.add('lg-off')">Все фото и видео на Яндекс Картах<svg class="ico ico-arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
     </div>
   </section>
 
@@ -912,7 +911,7 @@ ul,ol{margin:0;padding:0;list-style:none}
           <p style="font-size:15px">Ежедневно 09:00–20:00</p>
           <div class="ticket__btns">
             <a class="btn btn--primary js-call" data-phone href="tel:+79530977790"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg>Позвонить</a>
-            <a class="btn btn--ghost js-wa" data-wa href="https://wa.me/79530977790" target="_blank" rel="noopener"><span class="lg-plate" aria-hidden="true"><img src="https://trace-logos.ru/assets/logos/svgs/whatsapp.svg" alt="" width="22" height="22" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.closest('a').classList.add('lg-off')"></span>WhatsApp</a>
+            <a class="btn btn--ghost js-wa" data-wa href="https://wa.me/79530977790" target="_blank" rel="noopener"><img class="lg lg--b" src="https://trace-logos.ru/assets/logos/svgs/whatsapp.svg" alt="" aria-hidden="true" width="22" height="22" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.hidden=true;this.closest('a').classList.add('lg-off')">WhatsApp</a>
           </div>
         </aside>
 
@@ -1005,9 +1004,9 @@ ul,ol{margin:0;padding:0;list-style:none}
           <div><dt>Ориентир</dt><dd>Вывеска «ГАРАЖ МОЛЛ ВИБРОСТЕНД», ворота с надписью СТО</dd></div>
         </dl>
         <div class="contacts__btns">
-          <a class="btn btn--primary" href="https://yandex.ru/maps/org/205484445084" target="_blank" rel="noopener"><span class="lg-plate" aria-hidden="true"><img src="https://trace-logos.ru/assets/logos/svgs/yandex-maps.svg" alt="" width="22" height="22" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.closest('a').classList.add('lg-off')"></span>Как доехать</a>
+          <a class="btn btn--ghost" href="https://yandex.ru/maps/org/205484445084" target="_blank" rel="noopener"><img class="lg lg--b" src="https://trace-logos.ru/assets/logos/svgs/yandex-maps.svg" alt="" aria-hidden="true" width="22" height="22" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.hidden=true;this.closest('a').classList.add('lg-off')">Как доехать</a>
           <a class="btn btn--ghost js-call" data-phone href="tel:+79530977790"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg>Позвонить</a>
-          <a class="btn btn--ghost js-wa" data-wa href="https://wa.me/79530977790" target="_blank" rel="noopener"><span class="lg-plate" aria-hidden="true"><img src="https://trace-logos.ru/assets/logos/svgs/whatsapp.svg" alt="" width="22" height="22" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.closest('a').classList.add('lg-off')"></span>WhatsApp</a>
+          <a class="btn btn--ghost js-wa" data-wa href="https://wa.me/79530977790" target="_blank" rel="noopener"><img class="lg lg--b" src="https://trace-logos.ru/assets/logos/svgs/whatsapp.svg" alt="" aria-hidden="true" width="22" height="22" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.hidden=true;this.closest('a').classList.add('lg-off')">WhatsApp</a>
         </div>
       </div>
       <figure class="place rv">
@@ -1071,7 +1070,7 @@ ul,ol{margin:0;padding:0;list-style:none}
 
 <div class="fab" id="fab">
   <a class="btn btn--primary js-call" data-phone href="tel:+79530977790"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg>Позвонить</a>
-  <a class="btn btn--wa js-wa" data-wa href="https://wa.me/79530977790" target="_blank" rel="noopener" aria-label="Написать в WhatsApp"><span class="lg-plate" aria-hidden="true"><img src="https://trace-logos.ru/assets/logos/svgs/whatsapp.svg" alt="" width="22" height="22" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.closest('a').classList.add('lg-off')"></span><span class="lg-fb" aria-hidden="true">WA</span></a>
+  <a class="btn btn--wa js-wa" data-wa href="https://wa.me/79530977790" target="_blank" rel="noopener" aria-label="Написать в WhatsApp"><img class="lg lg--b" src="https://trace-logos.ru/assets/logos/svgs/whatsapp.svg" alt="" aria-hidden="true" width="22" height="22" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.hidden=true;this.closest('a').classList.add('lg-off')"><span class="lg-fb" aria-hidden="true">WA</span></a>
 </div>
 
 <!-- Cookie-баннер (legal/cookie-notice.md). Показывается из JS, пока нет сохранённого выбора. -->
