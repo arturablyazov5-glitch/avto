@@ -130,8 +130,6 @@
   --ease:cubic-bezier(.2,.7,.2,1);
   --display:"Russo One", "Arial Black", Impact, system-ui, sans-serif;
   --text:system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  /* пунктир как на нижней кромке вывески */
-  --dash:repeating-linear-gradient(90deg, currentColor 0 14px, transparent 14px 24px);
 }
 @media (min-width:768px){:root{--gutter:32px;--sp-section:96px}}
 @media (min-width:1100px){:root{--sp-section:120px}}
@@ -153,10 +151,7 @@ ul,ol{margin:0;padding:0;list-style:none}
 :focus-visible{outline:3px solid var(--accent-2);outline-offset:3px}
 .ico{width:22px;height:22px;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 
-/* Заголовок секции: номер + пунктир + подпись */
-.kicker{display:flex;align-items:center;gap:12px;margin-bottom:16px;font:600 13px/1 var(--text);letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
-.kicker i{font:400 13px/1 var(--display);font-style:normal;color:var(--fg);letter-spacing:.06em}
-.kicker::after{content:"";flex:0 0 56px;height:3px;background:var(--dash);color:var(--accent);opacity:.7}
+/* Заголовок секции */
 .head{display:grid;gap:14px;margin-bottom:36px;max-width:720px}
 .head p{color:var(--muted);font-size:18px}
 @media (min-width:992px){.head{margin-bottom:52px}}
@@ -164,14 +159,13 @@ ul,ol{margin:0;padding:0;list-style:none}
 /* Кнопки */
 .btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:14px 26px;border-radius:12px;
   font:700 17px/1.1 var(--text);text-decoration:none;border:2px solid transparent;cursor:pointer;
-  transition:background-color .2s var(--ease),border-color .2s var(--ease),color .2s var(--ease),transform .15s var(--ease),box-shadow .2s var(--ease)}
+  transition:background-color .2s var(--ease),border-color .2s var(--ease),color .2s var(--ease)}
 .lg--b{flex:none;width:22px;height:22px;border-radius:24%;display:block}
 .lg-fb{display:none;font-weight:700;font-size:15px}
 .lg-off .lg-fb{display:inline}
 .lg--b[hidden]{display:none}.lg--s{border-radius:24%;display:inline-block;width:1.1em;height:1.1em;vertical-align:-.2em;margin-right:.4em}.lg--s[hidden]{display:none}
-.btn:active{transform:translateY(1px) scale(.99)}
-.btn--primary{background:var(--accent);color:var(--on-accent);box-shadow:0 8px 24px -10px rgba(46,196,207,.7)}
-.btn--primary:hover{background:var(--accent-2);box-shadow:0 12px 30px -10px rgba(46,196,207,.85)}
+.btn--primary{background:var(--accent);color:var(--on-accent)}
+.btn--primary:hover{background:var(--accent-2)}
 .btn--ghost{background:rgba(255,255,255,.02);color:var(--fg);border-color:var(--line-2)}
 .btn--ghost:hover{border-color:var(--accent);color:var(--accent-2)}
 .btn .ico-arrow{transition:transform .2s var(--ease)}
@@ -191,9 +185,9 @@ ul,ol{margin:0;padding:0;list-style:none}
 .logo small{font:600 10px/1 var(--text);letter-spacing:.2em;text-transform:uppercase;color:var(--accent);white-space:nowrap}
 .nav{display:none;gap:4px}
 .nav a{position:relative;color:var(--muted);text-decoration:none;font-weight:600;font-size:15px;padding:12px 14px;border-radius:8px;transition:color .2s}
-.nav a::after{content:"";position:absolute;left:14px;right:14px;bottom:6px;height:2px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .25s var(--ease)}
+.nav a::after{content:"";position:absolute;left:14px;right:14px;bottom:6px;height:2px;background:var(--accent);opacity:0;transition:opacity .2s}
 .nav a:hover{color:var(--fg)}
-.nav a:hover::after,.nav a[aria-current="true"]::after{transform:scaleX(1)}
+.nav a:hover::after,.nav a[aria-current="true"]::after{opacity:1}
 .nav a[aria-current="true"]{color:var(--fg)}
 .header__cta{display:flex;align-items:center;gap:14px}
 .header__phone{display:none;color:var(--fg);text-decoration:none;font-weight:700;font-size:18px;white-space:nowrap;padding-block:12px;transition:color .2s}
@@ -206,9 +200,6 @@ ul,ol{margin:0;padding:0;list-style:none}
 
 /* ===== Hero ===== */
 .hero{position:relative;overflow:clip;isolation:isolate}
-.hero::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
-  background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
-  background-size:48px 48px;-webkit-mask-image:radial-gradient(120% 80% at 20% 30%,#000 30%,transparent 75%);mask-image:radial-gradient(120% 80% at 20% 30%,#000 30%,transparent 75%)}
 .hero__grid{display:grid}
 .hero__media{position:relative;margin-inline:calc(var(--gutter) * -1)}
 .hero__media img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 52%}
@@ -235,6 +226,16 @@ ul,ol{margin:0;padding:0;list-style:none}
 .hero__ctas{display:grid;gap:12px}
 .hero__addr{display:flex;gap:10px;align-items:flex-start;margin-top:22px;color:var(--muted);font-size:15px}
 .hero__addr .ico{color:var(--accent)}
+@media (max-width:767px){
+  .hero__media img{aspect-ratio:16/9;object-position:50% 58%}
+  .hero__body{margin-top:-44px;padding-bottom:40px}
+  .rating{margin-bottom:12px}
+  .hero h1{margin-bottom:12px}
+  .h1__name{margin-bottom:8px}
+  .hero__sub{font-size:16px;margin-bottom:16px}
+  .hero__prices{margin-bottom:16px}
+  .hero__addr{margin-top:16px}
+}
 @media (min-width:480px){.hero__ctas{grid-template-columns:repeat(2,max-content)}}
 @media (min-width:768px){
   .hero__media img{aspect-ratio:16/11;object-position:50% 50%}
@@ -252,15 +253,6 @@ ul,ol{margin:0;padding:0;list-style:none}
   .hero__media picture{display:block;border-radius:var(--r-l);overflow:hidden;border:1px solid var(--line);box-shadow:0 40px 90px -30px rgba(0,0,0,.8)}
   .hero__media img{aspect-ratio:3/4;object-position:50% 50%;max-height:calc(100vh - var(--header-h) - 120px);min-height:520px}
   .hero__media::after{border-radius:var(--r-l);background:linear-gradient(180deg,rgba(17,20,23,0) 62%,rgba(17,20,23,.78) 100%)}
-  /* «видоискатель» — уголки рамки */
-  .hero__media::before{content:"";position:absolute;inset:-14px;pointer-events:none;z-index:2;
-    --c:var(--accent);
-    background:
-      linear-gradient(var(--c),var(--c)) top left/28px 3px,linear-gradient(var(--c),var(--c)) top left/3px 28px,
-      linear-gradient(var(--c),var(--c)) top right/28px 3px,linear-gradient(var(--c),var(--c)) top right/3px 28px,
-      linear-gradient(var(--c),var(--c)) bottom left/28px 3px,linear-gradient(var(--c),var(--c)) bottom left/3px 28px,
-      linear-gradient(var(--c),var(--c)) bottom right/28px 3px,linear-gradient(var(--c),var(--c)) bottom right/3px 28px;
-    background-repeat:no-repeat}
   .hero__tag{display:flex;position:absolute;z-index:3;left:20px;right:20px;bottom:20px;gap:10px;align-items:center;color:var(--fg);font-weight:600;font-size:15px}
   .hero__tag .ico{color:var(--accent)}
 }
@@ -270,8 +262,7 @@ ul,ol{margin:0;padding:0;list-style:none}
 .prices__grid{display:grid;gap:16px}
 @media (min-width:992px){.prices__grid{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:24px;align-items:stretch}}
 .feature{position:relative;overflow:hidden;display:flex;flex-direction:column;gap:14px;padding:26px 22px;border-radius:var(--r-l);
-  background:radial-gradient(120% 90% at 100% 0,rgba(46,196,207,.28),transparent 55%),linear-gradient(180deg,#1b2a2e,var(--card));border:1px solid rgba(46,196,207,.55)}
-.feature::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:var(--dash);color:var(--accent);opacity:.6}
+  background:var(--card);border:1px solid rgba(46,196,207,.55)}
 .feature__tag{align-self:flex-start;font:700 12px/1 var(--text);letter-spacing:.12em;text-transform:uppercase;color:var(--on-accent);background:var(--accent);border-radius:6px;padding:7px 9px}
 .feature h3{font-size:clamp(24px,5.6vw,32px)}
 .feature p{color:var(--fg-2)}
@@ -284,22 +275,13 @@ ul,ol{margin:0;padding:0;list-style:none}
 
 .board{border-radius:var(--r-l);border:1px solid var(--line);background:var(--card);padding:6px 0}
 .board__row{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:6px 14px;padding:18px 20px;position:relative}
-.board__row+.board__row{border-top:1px dashed var(--line-2)}
 .board__name{display:flex;align-items:baseline;gap:10px;min-width:0}
 .board__name h3{font-size:19px}
-.board__name::after{content:"";flex:1 1 24px;min-width:16px;border-bottom:2px dotted var(--line-2);transform:translateY(-4px)}
 .board__price{font:400 24px/1 var(--display);white-space:nowrap}
 .board__price--ask{font:600 15px/1.2 var(--text);color:var(--muted)}
 .feature__price small{font-size:.45em;vertical-align:.35em;margin-right:.1em;color:var(--fg-2)}
 .h1__name{display:block;font:600 14px/1.2 var(--text);letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
-.board__meta{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-start;gap:8px 16px;color:var(--muted);font-size:14px}
-.board__link{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding-inline:4px;margin-inline:-4px;color:var(--accent-2);font-weight:700;font-size:15px;text-decoration:none;border-radius:8px}
-.board__link .ico{width:18px;height:18px;transition:transform .2s var(--ease)}
-.board__link:hover .ico{transform:translateX(4px)}
-.board__row:hover .board__price{color:var(--accent-2)}
 .board__foot{padding:16px 20px 14px;border-top:1px solid var(--line);color:var(--muted);font-size:15px}
-.board__foot a{display:inline-block;padding-block:12px;margin-block:-12px;font-weight:700;color:var(--fg);text-decoration:none;white-space:nowrap}
-.board__foot a:hover{color:var(--accent-2)}
 @media (min-width:768px){.board__row{padding:22px 28px}.board__foot{padding:18px 28px}}
 .brands{margin-top:20px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;color:var(--muted);font-size:15px}
 .brands b{color:var(--fg);font-weight:600}
@@ -307,9 +289,7 @@ ul,ol{margin:0;padding:0;list-style:none}
 /* ===== Почему к нам ===== */
 .perks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
 @media (min-width:768px){.perks{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}}
-.perk{position:relative;display:flex;flex-direction:column;gap:18px;min-height:132px;padding:18px;border-radius:var(--r);background:var(--card);border:1px solid var(--line);
-  transition:border-color .25s var(--ease),transform .25s var(--ease),background-color .25s}
-.perk:hover{border-color:rgba(46,196,207,.6);transform:translateY(-3px);background:var(--card-2)}
+.perk{position:relative;display:flex;flex-direction:column;gap:18px;min-height:132px;padding:18px;border-radius:var(--r);background:var(--card);border:1px solid var(--line)}
 .perk__ico{width:48px;height:48px;border-radius:12px;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent)}
 .perk__ico .ico{width:26px;height:26px}
 .perk b{margin-top:auto;font-weight:700;font-size:16px;line-height:1.3}
@@ -318,21 +298,17 @@ ul,ol{margin:0;padding:0;list-style:none}
 
 /* ===== Как проходит диагностика ===== */
 .how{background:var(--bg-2);border-block:1px solid var(--line);overflow:clip}
-.how::before{content:"ВИБРОСТЕНД";position:absolute;right:-.06em;top:24px;font:400 clamp(64px,14vw,200px)/1 var(--display);color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.06);pointer-events:none;white-space:nowrap;max-width:100%;overflow:hidden}
 .steps{display:grid;gap:0;counter-reset:s;position:relative}
 .step{position:relative;display:grid;grid-template-columns:56px minmax(0,1fr);gap:0 18px;padding-bottom:28px}
 .step::before{counter-increment:s;content:counter(s);grid-row:1/span 2;width:56px;height:56px;border-radius:50%;display:grid;place-items:center;
-  font:400 22px/1 var(--display);color:var(--on-accent);background:var(--accent);box-shadow:0 0 0 6px var(--bg-2),0 0 0 7px rgba(46,196,207,.35);position:relative;z-index:1}
-.step::after{content:"";position:absolute;left:27px;top:56px;bottom:0;width:2px;background:repeating-linear-gradient(180deg,var(--line-2) 0 8px,transparent 8px 14px)}
+  font:400 22px/1 var(--display);color:var(--on-accent);background:var(--accent);position:relative;z-index:1}
 .step:last-child{padding-bottom:0}
-.step:last-child::after{display:none}
 .step h3{padding-top:6px;margin-bottom:6px}
 .step p{color:var(--muted);font-size:16px}
 @media (min-width:992px){
   .steps{grid-template-columns:repeat(4,minmax(0,1fr));gap:28px}
   .step{grid-template-columns:1fr;gap:0;padding:0}
   .step::before{grid-row:auto;margin-bottom:22px}
-  .step::after{left:70px;right:-28px;top:27px;bottom:auto;width:auto;height:2px;background:repeating-linear-gradient(90deg,var(--line-2) 0 8px,transparent 8px 14px)}
   .step h3{padding-top:0;margin-bottom:10px}
 }
 .how__cta{display:flex;flex-wrap:wrap;gap:14px 20px;align-items:center;margin-top:40px;padding:20px;border-radius:var(--r);border:1px solid var(--line);background:var(--card)}
@@ -355,13 +331,12 @@ ul,ol{margin:0;padding:0;list-style:none}
 .reviews{display:grid;grid-auto-flow:column;grid-auto-columns:min(86%,420px);gap:12px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;align-items:start;
   margin-inline:calc(var(--gutter) * -1);padding:4px var(--gutter) 18px;scroll-padding-inline:var(--gutter);scrollbar-width:thin;scrollbar-color:var(--line-2) transparent}
 .reviews:focus-visible{outline-offset:-3px}
-.review{scroll-snap-align:start;margin:0;display:flex;flex-direction:column;gap:18px;padding:24px 22px;border-radius:var(--r-l);background:var(--card);border:1px solid var(--line);transition:border-color .25s}
-.review:hover{border-color:var(--line-2)}
+.review{scroll-snap-align:start;margin:0;display:flex;flex-direction:column;gap:18px;padding:24px 22px;border-radius:var(--r-l);background:var(--card);border:1px solid var(--line)}
 .review blockquote{margin:0;font-size:16px;line-height:1.62;color:var(--fg-2)}
 .review blockquote::before{content:"";display:block;width:34px;height:26px;margin-bottom:14px;background:var(--accent);
   -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 26'%3E%3Cpath d='M0 26V14C0 5 5 0 14 0v6c-4 0-6 2-6 7h6v13zm20 0V14c0-9 5-14 14-14v6c-4 0-6 2-6 7h6v13z'/%3E%3C/svg%3E") no-repeat;
           mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 26'%3E%3Cpath d='M0 26V14C0 5 5 0 14 0v6c-4 0-6 2-6 7h6v13zm20 0V14c0-9 5-14 14-14v6c-4 0-6 2-6 7h6v13z'/%3E%3C/svg%3E") no-repeat}
-.review figcaption{margin-top:auto;display:flex;align-items:center;gap:12px;padding-top:16px;border-top:1px dashed var(--line-2)}
+.review figcaption{margin-top:auto;display:flex;align-items:center;gap:12px;padding-top:16px}
 .avatar{flex:none;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent);font:400 17px/1 var(--display);text-transform:uppercase}
 .review figcaption span{display:grid;gap:2px;font-size:14px;color:var(--muted)}
 .review figcaption b{color:var(--fg);font-size:16px;overflow-wrap:anywhere}
@@ -375,7 +350,7 @@ ul,ol{margin:0;padding:0;list-style:none}
 @media (min-width:1100px){.reviews{columns:3;column-gap:20px}.review{margin-bottom:20px}}
 
 /* Цитата-доказательство в hero */
-.proof{display:grid;gap:6px;max-width:46ch;margin:-6px 0 24px;padding:12px 0 12px 16px;border-left:3px solid var(--accent);color:var(--fg);text-decoration:none}
+.proof{display:grid;gap:6px;max-width:46ch;margin:22px 0 0;padding:12px 0 12px 16px;border-left:3px solid var(--accent);color:var(--fg);text-decoration:none}
 .proof__q{font-size:16px;font-style:italic;color:var(--fg-2)}
 .proof__a{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--muted)}
 .proof__a .ico{width:16px;height:16px;transition:transform .2s var(--ease)}
@@ -384,9 +359,11 @@ ul,ol{margin:0;padding:0;list-style:none}
 
 /* «Почему к нам»: смыслы из отзывов */
 .voices{display:grid;gap:12px;margin-bottom:22px}
-@media (min-width:768px){.voices{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}}
+@media (min-width:768px){.voices{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}}
+.how__voices{margin:32px 0 0}
+#why .voices{grid-template-columns:minmax(0,1fr);max-width:560px}
 .voice{margin:0;display:flex;flex-direction:column;gap:10px;padding:22px;border-radius:var(--r-l);border:1px solid rgba(46,196,207,.4);
-  background:linear-gradient(160deg,rgba(46,196,207,.14),transparent 60%),var(--card)}
+  background:var(--card)}
 .voice__t{font:400 21px/1.15 var(--display)}
 .voice blockquote{margin:0;color:var(--fg-2);font-size:16px}
 .voice figcaption{margin-top:auto;font-size:14px;color:var(--muted)}
@@ -398,7 +375,6 @@ ul,ol{margin:0;padding:0;list-style:none}
 .lead__grid{display:grid;gap:28px}
 @media (min-width:992px){.lead__grid{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:56px;align-items:start}}
 .ticket{position:relative;padding:24px 22px;border-radius:var(--r-l);background:var(--card);border:1px solid var(--line)}
-.ticket::before{content:"";position:absolute;left:22px;right:22px;top:0;height:4px;background:var(--dash);color:var(--accent)}
 .ticket p{color:var(--muted)}
 .ticket__label{font:600 13px/1 var(--text);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:22px 0 4px}
 .big-phone{display:inline-block;font:400 clamp(26px,7.4vw,36px)/1.2 var(--display);color:var(--fg);text-decoration:none;padding-block:7px;transition:color .2s}
@@ -414,13 +390,13 @@ ul,ol{margin:0;padding:0;list-style:none}
 .field label{font-weight:600;font-size:15px;color:var(--fg-2)}
 .field label small{color:var(--muted);font-weight:400}
 .field input,.field textarea{width:100%;min-height:54px;padding:13px 15px;border-radius:var(--r-s);border:1.5px solid var(--line-2);background:#0f1215;color:var(--fg);
-  font:400 17px/1.4 var(--text);transition:border-color .2s,box-shadow .2s,background-color .2s}
+  font:400 17px/1.4 var(--text);transition:border-color .2s,background-color .2s}
 .field textarea{min-height:112px;resize:vertical}
 .field input::placeholder,.field textarea::placeholder{color:#7f8992}
 .field input:hover,.field textarea:hover{border-color:#56616a}
-.field input:focus,.field textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 4px rgba(46,196,207,.2);background:#0c0f12}
+.field input:focus,.field textarea:focus{outline:2px solid var(--accent);outline-offset:2px;border-color:var(--accent);background:#0c0f12}
 .field [aria-invalid="true"]{border-color:var(--danger)}
-.field [aria-invalid="true"]:focus{box-shadow:0 0 0 4px rgba(255,138,128,.2)}
+.field [aria-invalid="true"]:focus{outline-color:var(--danger)}
 .err{display:flex;gap:6px;align-items:center;color:var(--danger);font-size:14px}
 .err:empty{display:none}
 .err::before{content:"!";flex:none;width:18px;height:18px;border-radius:50%;display:grid;place-items:center;background:var(--danger);color:#2a0b08;font:800 12px/1 var(--text)}
@@ -441,8 +417,7 @@ ul,ol{margin:0;padding:0;list-style:none}
 .place{position:relative;margin:0}
 .place__main{display:block;overflow:hidden;border-radius:var(--r-l);
   -webkit-clip-path:polygon(0 0,calc(100% - 56px) 0,100% 56px,100% 100%,0 100%);clip-path:polygon(0 0,calc(100% - 56px) 0,100% 56px,100% 100%,0 100%)}
-.place img{width:100%;aspect-ratio:1/1;object-fit:cover;object-position:50% 34%;transition:transform .8s var(--ease)}
-.place:hover img{transform:scale(1.03)}
+.place img{width:100%;aspect-ratio:1/1;object-fit:cover;object-position:50% 34%}
 .place::after{content:"";position:absolute;inset:0;border-radius:var(--r-l);pointer-events:none;background:linear-gradient(180deg,transparent 55%,rgba(17,20,23,.85));
   -webkit-clip-path:polygon(0 0,calc(100% - 56px) 0,100% 56px,100% 100%,0 100%);clip-path:polygon(0 0,calc(100% - 56px) 0,100% 56px,100% 100%,0 100%)}
 .place__pin{position:absolute;z-index:1;left:16px;right:16px;bottom:16px;display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:var(--r);background:rgba(17,20,23,.86);border:1px solid var(--line-2);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
@@ -466,24 +441,20 @@ ul,ol{margin:0;padding:0;list-style:none}
 
 /* Фото в карточке вибростенда */
 .feature__img{display:block;margin:-26px -22px 6px;overflow:hidden;border-bottom:1px solid rgba(46,196,207,.35)}
-.feature__img img{width:100%;aspect-ratio:16/9;object-fit:cover;object-position:50% 48%;transition:transform .8s var(--ease)}
-.feature:hover .feature__img img{transform:scale(1.04)}
+.feature__img img{width:100%;aspect-ratio:16/9;object-fit:cover;object-position:50% 48%}
 @media (min-width:768px){.feature__img{margin:-36px -36px 8px}}
 @media (min-width:992px){.feature__img img{aspect-ratio:16/8}}
 /* Миниатюры в прайсе */
 .board__row{grid-template-columns:64px minmax(0,1fr);gap:4px 14px}
 .board__price{grid-column:2}
-.board__name::after{display:none}
 .board__thumb{grid-row:1/span 3;align-self:start;width:64px;height:64px;border-radius:12px;overflow:hidden;border:1px solid var(--line-2);background:var(--card-2)}
 .board__thumb img{width:100%;height:100%;object-fit:cover}
 .board__thumb--ico{display:grid;place-items:center;color:var(--accent)}
 .board__thumb--ico .ico{width:28px;height:28px}
-.board__meta{grid-column:2/-1}
 @media (min-width:480px){
   .board__row{grid-template-columns:64px minmax(0,1fr) auto;gap:6px 14px}
   .board__thumb{grid-row:1/span 2}
   .board__price{grid-column:auto}
-  .board__name::after{display:block}
 }
 @media (min-width:768px){.board__row{grid-template-columns:84px minmax(0,1fr) auto}.board__thumb{width:84px;height:84px}}
 /* «Почему к нам»: фото рабочей зоны */
@@ -496,7 +467,6 @@ ul,ol{margin:0;padding:0;list-style:none}
   .why__photo{order:0}
   .why__photo picture{display:block;height:100%}
   .why__photo img{aspect-ratio:auto;height:100%;min-height:480px}
-  .why__main .voices{grid-template-columns:repeat(3,minmax(0,1fr))}
   .why__main .perks{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media (min-width:1100px){.why__main .perks{grid-template-columns:repeat(3,minmax(0,1fr))}}
@@ -504,8 +474,7 @@ ul,ol{margin:0;padding:0;list-style:none}
 .shots{display:grid;grid-auto-flow:column;grid-auto-columns:min(70%,300px);gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;
   margin:40px calc(var(--gutter) * -1) 0;padding:0 var(--gutter) 12px;scroll-padding-inline:var(--gutter);scrollbar-width:thin;scrollbar-color:var(--line-2) transparent}
 .shot{margin:0;position:relative;scroll-snap-align:start;border-radius:var(--r);overflow:hidden;border:1px solid var(--line)}
-.shot img{width:100%;aspect-ratio:3/4;object-fit:cover;transition:transform .8s var(--ease)}
-.shot:hover img{transform:scale(1.05)}
+.shot img{width:100%;aspect-ratio:3/4;object-fit:cover}
 .shot figcaption{position:absolute;left:10px;bottom:10px;padding:6px 10px;border-radius:8px;background:rgba(17,20,23,.85);font-size:13px;font-weight:600}
 @media (min-width:992px){.shots{grid-auto-flow:row;grid-template-columns:repeat(4,minmax(0,1fr));overflow:visible;margin-inline:0;padding:0;gap:16px}}
 /* Видео */
@@ -515,9 +484,8 @@ ul,ol{margin:0;padding:0;list-style:none}
 .vid img,.vid iframe{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:0}
 .vid__play{position:absolute;inset:0;display:grid;place-items:center;width:100%;border:0;padding:0;cursor:pointer;
   background:linear-gradient(180deg,rgba(0,0,0,0) 50%,rgba(0,0,0,.55));color:var(--on-accent)}
-.vid__btn{width:68px;height:68px;border-radius:50%;display:grid;place-items:center;background:var(--accent);box-shadow:0 0 0 8px rgba(46,196,207,.25);transition:transform .25s var(--ease),box-shadow .25s}
+.vid__btn{width:68px;height:68px;border-radius:50%;display:grid;place-items:center;background:var(--accent)}
 .vid__btn .ico{width:28px;height:28px;margin-left:4px}
-.vid__play:hover .vid__btn,.vid__play:focus-visible .vid__btn{transform:scale(1.08);box-shadow:0 0 0 12px rgba(46,196,207,.3)}
 .vid__play:focus-visible{outline-offset:-4px}
 .vid__alt{display:none}
 .vid.is-fallback .vid__play{display:none}
@@ -534,12 +502,9 @@ ul,ol{margin:0;padding:0;list-style:none}
 
 /* ===== Подвал ===== */
 .footer{position:relative;overflow:clip;border-top:1px solid var(--line);padding-block:40px 32px;color:var(--muted);font-size:14px}
-.footer__word{font:400 clamp(44px,13vw,168px)/.9 var(--display);letter-spacing:.02em;color:transparent;-webkit-text-stroke:1px rgba(46,196,207,.35);white-space:nowrap;margin-bottom:28px;user-select:none}
 .footer__row{display:flex;flex-wrap:wrap;gap:8px 28px;justify-content:space-between;align-items:center}
-.footer__links{display:flex;flex-wrap:wrap;gap:0 20px}
 .footer a{color:var(--fg);text-decoration:none;font-weight:600;display:inline-block;padding-block:12px;line-height:20px;transition:color .2s}
 .footer a:hover{color:var(--accent-2)}
-.footer__dash{height:3px;background:var(--dash);color:var(--line-2);margin-bottom:22px}
 
 /* ===== Плавающая кнопка (мобилка) ===== */
 .fab{position:fixed;left:var(--gutter);right:var(--gutter);bottom:calc(12px + env(safe-area-inset-bottom));z-index:60;display:flex;gap:10px;
@@ -631,12 +596,12 @@ ul,ol{margin:0;padding:0;list-style:none}
       <span class="logo__txt"><small>Вибростенд</small><b>ГАРАЖ МОЛЛ</b></span>
     </a>
     <nav class="nav" aria-label="Разделы">
-      <a href="#prices">Цены</a>
       <a href="#how">Диагностика</a>
       <a href="#work">Видео</a>
+      <a href="#prices">Цены</a>
       <a href="#reviews">Отзывы</a>
-      <a href="#lead">Запись</a>
       <a href="#faq">Вопросы</a>
+      <a href="#lead">Запись</a>
       <a href="#contacts">Контакты</a>
     </nav>
     <div class="header__cta">
@@ -666,7 +631,13 @@ ul,ol{margin:0;padding:0;list-style:none}
         </a>
         <h1 id="hero-title"><span class="h1__name">Вибростенд Гараж Молл</span> Диагностика подвески <em>на&nbsp;вибростенде</em> в&nbsp;Краснодаре</h1>
         <p class="hero__sub">Проверяем подвеску на вибростенде, диагностируем и ремонтируем ходовую, меняем масло, протачиваем тормозные диски, диагностируем электрику.</p>
-        <a class="proof" href="#reviews"><span class="proof__q">«Ребята нашли причину стука за пол часа, которую я искал несколько лет.»</span><span class="proof__a">Янис Дмитриев, отзыв на Яндекс Картах<svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
+        <script>/* H1 под группу объявлений: ?g=susp|oil|disc (без параметра — как есть) */
+        (function(){try{var g=(location.search.match(/[?&]g=([a-z]+)/)||[])[1],N='\u00a0',V={
+          susp:['Стук или скрип в подвеске? Проверим на'+N+'вибростенде','Диагностика подвески на вибростенде, диагностика и ремонт ходовой в Краснодаре.'],
+          oil:['Замена масла в'+N+'Краснодаре от'+N+'500'+N+'₽','Посёлок Индустриальный, ежедневно 09:00–20:00. Также проверяем подвеску на вибростенде.'],
+          disc:['Проточка тормозных дисков в'+N+'Краснодаре от'+N+'4'+N+'000'+N+'₽','Можно ли проточить диск, решают после осмотра.']}[g];
+          if(!V)return;var h=document.getElementById('hero-title'),n=h.querySelector('.h1__name');h.textContent='';h.appendChild(n);h.appendChild(document.createTextNode(' '+V[0]));
+          h.parentNode.querySelector('.hero__sub').textContent=V[1];}catch(e){}})();</script>
         <ul class="hero__prices" aria-label="Цены">
           <li><span>Вибростенд</span><b>от 3&nbsp;000&nbsp;₽</b></li>
           <li><span>Ремонт ходовой</span><b>от 2&nbsp;000&nbsp;₽</b></li>
@@ -676,96 +647,8 @@ ul,ol{margin:0;padding:0;list-style:none}
           <a class="btn btn--primary js-call" data-phone href="tel:+79530977790"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg>Позвонить</a>
           <a class="btn btn--ghost" href="#lead">Записаться<svg class="ico ico-arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
         </div>
+        <a class="proof" href="#reviews"><span class="proof__q">«Ребята нашли причину стука за пол часа, которую я искал несколько лет.»</span><span class="proof__a">Янис Дмитриев, отзыв на Яндекс Картах<svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
         <p class="hero__addr"><svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg><span>посёлок Индустриальный, Евдокимовская улица, 4 · ежедневно 09:00–20:00</span></p>
-      </div>
-    </div>
-  </section>
-
-  <!-- УСЛУГИ И ЦЕНЫ -->
-  <section class="section prices" id="prices" aria-labelledby="prices-title">
-    <div class="wrap">
-      <div class="head rv">
-        <span class="kicker"><i>01</i>Услуги и цены</span>
-        <h2 id="prices-title">Что делаем и сколько стоит</h2>
-        <p>Цены из нашего каталога. Итоговая стоимость зависит от автомобиля и объёма работ, точнее скажут по телефону.</p>
-      </div>
-      <div class="prices__grid">
-        <article class="feature rv">
-          <picture class="feature__img">
-            <img src="img/opt/vibrostend-equipment-720.webp" width="720" height="720" loading="lazy" decoding="async"
-                 alt="Два вибростенда Vibr-Car оранжевого цвета, надпись «Гараж Молл Вибростенд, since 2025»">
-          </picture>
-          <span class="feature__tag">Вибростенд</span>
-          <h3>Диагностика подвески на вибростенде</h3>
-          <p>Если машина стала хуже проходить неровности, появились стуки или раскачка — начните с проверки на стенде.</p>
-          <div class="feature__price"><b><small>от</small> 3&nbsp;000&nbsp;₽</b></div>
-          <div class="feature__ctas">
-            <a class="btn btn--primary" href="#lead" data-service="Вибростенд (диагностика подвески)">Записаться<svg class="ico ico-arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-            <a class="btn btn--ghost" href="#how">Как проходит</a>
-          </div>
-        </article>
-        <div class="board rv">
-          <div class="board__row">
-            <picture class="board__thumb"><img src="img/opt/suspension-work-thumb.webp" width="192" height="192" loading="lazy" decoding="async" alt="Автомобиль на подъёмнике, работа с передней подвеской"></picture>
-            <div class="board__name"><h3>Ремонт ходовой</h3></div>
-            <p class="board__price">от 2&nbsp;000&nbsp;₽</p>
-            <div class="board__meta"><a class="board__link" href="#lead" data-service="Ремонт ходовой">Записаться<svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a></div>
-          </div>
-          <div class="board__row">
-            <picture class="board__thumb"><img src="img/opt/brake-disc-thumb.webp" width="192" height="192" loading="lazy" decoding="async" alt="Тормозной диск и суппорт на снятом колесе"></picture>
-            <div class="board__name"><h3>Проточка тормозных дисков</h3></div>
-            <p class="board__price">от 4&nbsp;000&nbsp;₽</p>
-            <div class="board__meta"><a class="board__link" href="#lead" data-service="Проточка тормозных дисков">Записаться<svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a></div>
-          </div>
-          <div class="board__row">
-            <span class="board__thumb board__thumb--ico" aria-hidden="true"><svg class="ico"><use href="#i-drop"/></svg></span>
-            <div class="board__name"><h3>Замена масла</h3></div>
-            <p class="board__price">от 500&nbsp;₽</p>
-            <div class="board__meta"><a class="board__link" href="#lead" data-service="Замена масла">Записаться<svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a></div>
-          </div>
-          <div class="board__row">
-            <span class="board__thumb board__thumb--ico" aria-hidden="true"><svg class="ico"><use href="#i-bolt"/></svg></span>
-            <div class="board__name"><h3>Диагностика электрики</h3></div>
-            <p class="board__price board__price--ask">по телефону</p>
-            <div class="board__meta"><a class="board__link" href="#lead" data-service="Диагностика электрики">Записаться<svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a></div>
-          </div>
-          <p class="board__foot">Нужна другая работа? Позвоните, подскажем: <a class="js-call" data-phone="text" href="tel:+79530977790">+7 953 097 77 90</a></p>
-        </div>
-      </div>
-      <p class="brands rv"><svg class="ico" aria-hidden="true" style="color:var(--accent)"><use href="#i-info"/></svg><span>Марки: <b>отечественные и импортные легковые автомобили</b></span></p>
-    </div>
-  </section>
-
-  <!-- ПОЧЕМУ К НАМ -->
-  <section class="section" id="why" aria-labelledby="why-title">
-    <div class="wrap">
-      <div class="head rv">
-        <span class="kicker"><i>02</i>Почему к нам</span>
-        <h2 id="why-title">Удобно, пока ждёте машину</h2>
-        <p>Базовое и продвинутое сервисное обслуживание. Что отмечают клиенты — их словами.</p>
-      </div>
-      <div class="why__grid">
-      <div class="why__main">
-      <div class="voices">
-        <figure class="voice rv"><p class="voice__t">Находят причину стука</p><blockquote>«Ребята нашли причину стука за пол часа, которую я искал несколько лет.»</blockquote><figcaption>Янис Дмитриев</figcaption></figure>
-        <figure class="voice rv"><p class="voice__t">Ничего не навязывают</p><blockquote>«Указали на некритичные проблемы, ничего не навязывали из запчастей и услуг.»</blockquote><figcaption>Максим Стрельцов</figcaption></figure>
-        <figure class="voice rv"><p class="voice__t">Есть где подождать</p><blockquote>«Есть комната ожидания с диванчиком.»</blockquote><figcaption>Янис Дмитриев</figcaption></figure>
-      </div>
-      <p class="voices__note rv">Так пишут клиенты в отзывах на Яндекс Картах. А ещё у нас:</p>
-      <ul class="perks">
-        <li class="perk rv"><span class="perk__ico"><svg class="ico" aria-hidden="true"><use href="#i-card"/></svg></span><b>Оплата картой</b></li>
-        <li class="perk rv"><span class="perk__ico"><svg class="ico" aria-hidden="true"><use href="#i-park"/></svg></span><b>Парковка</b></li>
-        <li class="perk rv"><span class="perk__ico"><svg class="ico" aria-hidden="true"><use href="#i-dog"/></svg></span><b>Можно с собакой</b></li>
-        <li class="perk rv"><span class="perk__ico"><svg class="ico" aria-hidden="true"><use href="#i-wc"/></svg></span><b>Туалет</b></li>
-        <li class="perk rv"><span class="perk__ico"><svg class="ico" aria-hidden="true"><use href="#i-gift"/></svg></span><b>Подарочный сертификат</b></li>
-        <li class="perk rv"><span class="perk__ico"><svg class="ico" aria-hidden="true"><use href="#i-lang"/></svg></span><b>Русификация автомобилей</b></li>
-      </ul>
-      </div>
-      <figure class="why__photo rv">
-        <picture><source type="image/webp" srcset="img/opt/workshop-tools-640.webp 640w, img/gallery/workshop-tools.webp 960w" sizes="(min-width: 992px) 30vw, 100vw">
-          <img src="img/gallery/workshop-tools.webp" width="960" height="1280" loading="lazy" decoding="async" alt="Рабочая зона: стеллаж с инструментом, пресс, тележка"></picture>
-        <figcaption>Рабочая зона</figcaption>
-      </figure>
       </div>
     </div>
   </section>
@@ -774,7 +657,6 @@ ul,ol{margin:0;padding:0;list-style:none}
   <section class="section how" id="how" aria-labelledby="how-title">
     <div class="wrap">
       <div class="head rv">
-        <span class="kicker"><i>03</i>Вибростенд</span>
         <h2 id="how-title">Как проходит диагностика подвески</h2>
         <p>Четыре шага — от звонка до разговора с мастером о результатах.</p>
       </div>
@@ -784,6 +666,10 @@ ul,ol{margin:0;padding:0;list-style:none}
         <li class="step rv"><h3>Осмотр мастером</h3><p>Мастер смотрит результаты стенда и при необходимости осматривает ходовую на подъёмнике.</p></li>
         <li class="step rv"><h3>Разбор результатов</h3><p>Рассказываем, что нашли, и обсуждаем ремонт и его стоимость.</p></li>
       </ol>
+      <div class="voices how__voices">
+        <figure class="voice rv"><p class="voice__t">Находят причину стука</p><blockquote>«Ребята нашли причину стука за пол часа, которую я искал несколько лет.»</blockquote><figcaption>Янис Дмитриев</figcaption></figure>
+        <figure class="voice rv"><p class="voice__t">Ничего не навязывают</p><blockquote>«Указали на некритичные проблемы, ничего не навязывали из запчастей и услуг.»</blockquote><figcaption>Максим Стрельцов</figcaption></figure>
+      </div>
       <div class="shots" tabindex="0" role="region" aria-label="Фото вибростенда">
         <figure class="shot rv"><picture><source type="image/webp" srcset="img/opt/vibrostend-bmw-5-front-640.webp 640w, img/gallery/vibrostend-bmw-5-front.webp 960w" sizes="(min-width: 992px) 25vw, 70vw"><img src="img/gallery/vibrostend-bmw-5-front.webp" width="960" height="1280" loading="lazy" decoding="async" alt="Автомобиль на подъёмнике с вибростендами, вид спереди"></picture><figcaption>Вид спереди</figcaption></figure>
         <figure class="shot rv"><picture><source type="image/webp" srcset="img/opt/vibrostend-bmw-5-side-640.webp 640w, img/gallery/vibrostend-bmw-5-side.webp 960w" sizes="(min-width: 992px) 25vw, 70vw"><img src="img/gallery/vibrostend-bmw-5-side.webp" width="960" height="1280" loading="lazy" decoding="async" alt="Автомобиль на подъёмнике с вибростендами, вид сбоку"></picture><figcaption>Вид сбоку</figcaption></figure>
@@ -801,7 +687,6 @@ ul,ol{margin:0;padding:0;list-style:none}
   <section class="section work" id="work" aria-labelledby="work-title">
     <div class="wrap">
       <div class="head rv">
-        <span class="kicker"><i>04</i>Видео</span>
         <h2 id="work-title">Вибростенд в работе</h2>
         <p>Короткие ролики из нашего бокса. Видео загружается, только когда вы нажмёте «play».</p>
       </div>
@@ -839,12 +724,60 @@ ul,ol{margin:0;padding:0;list-style:none}
     </div>
   </section>
 
+  <!-- УСЛУГИ И ЦЕНЫ -->
+  <section class="section prices" id="prices" aria-labelledby="prices-title">
+    <div class="wrap">
+      <div class="head rv">
+        <h2 id="prices-title">Что делаем и сколько стоит</h2>
+        <p>Цены из нашего каталога. Итоговая стоимость зависит от автомобиля и объёма работ, точнее скажут по телефону.</p>
+      </div>
+      <div class="prices__grid">
+        <article class="feature rv">
+          <picture class="feature__img">
+            <img src="img/opt/vibrostend-equipment-720.webp" width="720" height="720" loading="lazy" decoding="async"
+                 alt="Два вибростенда Vibr-Car оранжевого цвета, надпись «Гараж Молл Вибростенд, since 2025»">
+          </picture>
+          <span class="feature__tag">Вибростенд</span>
+          <h3>Диагностика подвески на вибростенде</h3>
+          <p>Если машина стала хуже проходить неровности, появились стуки или раскачка — начните с проверки на стенде.</p>
+          <div class="feature__price"><b><small>от</small> 3&nbsp;000&nbsp;₽</b></div>
+          <div class="feature__ctas">
+            <a class="btn btn--ghost" href="#how">Как проходит</a>
+          </div>
+        </article>
+        <div class="board rv">
+          <div class="board__row">
+            <picture class="board__thumb"><img src="img/opt/suspension-work-thumb.webp" width="192" height="192" loading="lazy" decoding="async" alt="Автомобиль на подъёмнике, работа с передней подвеской"></picture>
+            <div class="board__name"><h3>Ремонт ходовой</h3></div>
+            <p class="board__price">от 2&nbsp;000&nbsp;₽</p>
+          </div>
+          <div class="board__row">
+            <picture class="board__thumb"><img src="img/opt/brake-disc-thumb.webp" width="192" height="192" loading="lazy" decoding="async" alt="Тормозной диск и суппорт на снятом колесе"></picture>
+            <div class="board__name"><h3>Проточка тормозных дисков</h3></div>
+            <p class="board__price">от 4&nbsp;000&nbsp;₽</p>
+          </div>
+          <div class="board__row">
+            <span class="board__thumb board__thumb--ico" aria-hidden="true"><svg class="ico"><use href="#i-drop"/></svg></span>
+            <div class="board__name"><h3>Замена масла</h3></div>
+            <p class="board__price">от 500&nbsp;₽</p>
+          </div>
+          <div class="board__row">
+            <span class="board__thumb board__thumb--ico" aria-hidden="true"><svg class="ico"><use href="#i-bolt"/></svg></span>
+            <div class="board__name"><h3>Диагностика электрики</h3></div>
+            <p class="board__price board__price--ask">по телефону</p>
+          </div>
+          <p class="board__foot">Нужна другая работа? Позвоните, подскажем: +7&nbsp;953&nbsp;097&nbsp;77&nbsp;90</p>
+        </div>
+      </div>
+      <p class="brands rv"><svg class="ico" aria-hidden="true" style="color:var(--accent)"><use href="#i-info"/></svg><span>Марки: <b>отечественные и импортные легковые автомобили</b></span></p>
+    </div>
+  </section>
+
   <!-- ОТЗЫВЫ -->
   <section class="section" id="reviews" aria-labelledby="reviews-title">
     <div class="wrap">
       <div class="rev-head">
         <div class="head rv" style="margin:0">
-          <span class="kicker"><i>05</i>Отзывы</span>
           <h2 id="reviews-title">Что пишут клиенты</h2>
           <p>Отзывы с Яндекс Карт — дословно, без правок.</p>
         </div>
@@ -896,11 +829,80 @@ ul,ol{margin:0;padding:0;list-style:none}
     </div>
   </section>
 
+  <!-- FAQ -->
+  <section class="section faq" id="faq" aria-labelledby="faq-title">
+    <div class="wrap">
+      <div class="head rv">
+        <h2 id="faq-title">Вопросы об автосервисе и диагностике подвески</h2>
+      </div>
+      <div class="faq-list rv">
+        <details class="faq-item">
+          <summary class="faq-q">Что такое вибростенд и зачем он нужен?</summary>
+          <div class="faq-a"><p>Вибростенд это стенд, который раскачивает колёса автомобиля; по результатам колебаний можно судить о состоянии подвески и искать источник стука. Диагностика подвески на вибростенде в «Вибростенд Гараж Молл» стоит от 3 000 ₽. Итоговая стоимость зависит от автомобиля и объёма работ, точнее скажут по телефону +7&nbsp;953&nbsp;097&nbsp;77&nbsp;90.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">Сколько стоят услуги?</summary>
+          <div class="faq-a"><p>Цены от: замена масла от 500 ₽, ремонт ходовой от 2 000 ₽, диагностика подвески на вибростенде от 3 000 ₽, проточка тормозных дисков от 4 000 ₽. Итоговая стоимость зависит от автомобиля и объёма работ, точнее скажут по телефону. Диагностика электрики: стоимость уточняйте по телефону.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">В подвеске появился стук или скрип, что делать?</summary>
+          <div class="faq-a"><p>Такие симптомы могут быть связаны с состоянием подвески, точную причину определяет осмотр и диагностика. Для этого подходит диагностика подвески на вибростенде или диагностика ходовой части. Нужна другая работа? Позвоните, подскажем.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">Какие автомобили обслуживаются?</summary>
+          <div class="faq-a"><p>По данным карточки на Яндекс Картах: легковые автомобили, отечественные и импортные. Возможность работы с вашей моделью лучше уточнить по телефону.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">Можно ли проточить тормозные диски?</summary>
+          <div class="faq-a"><p>Не всегда: это зависит от износа и минимальной допустимой толщины диска, которую указывает производитель. Если диск слишком тонкий или повреждён, его меняют. Решение принимают после осмотра. Проточка тормозных дисков от 4 000 ₽, итоговая стоимость зависит от автомобиля и объёма работ.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">Какая оплата и есть ли парковка?</summary>
+          <div class="faq-a"><p>Оплата картой, есть парковка и туалет, можно с собакой, есть подарочный сертификат.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">Как приехать и когда вы работаете?</summary>
+          <div class="faq-a"><p>Адрес: пос. Индустриальный, Евдокимовская ул., 4, Краснодар. Работаем ежедневно с 09:00 до 20:00. Телефон +7&nbsp;953&nbsp;097&nbsp;77&nbsp;90, есть WhatsApp. На Яндекс Картах кнопка <a href="https://yandex.ru/maps/org/205484445084" target="_blank" rel="noopener">«Как доехать»</a>.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ПОЧЕМУ К НАМ -->
+  <section class="section" id="why" aria-labelledby="why-title">
+    <div class="wrap">
+      <div class="head rv">
+        <h2 id="why-title">Удобно, пока ждёте машину</h2>
+        <p>Базовое и продвинутое сервисное обслуживание. Что отмечают клиенты — их словами.</p>
+      </div>
+      <div class="why__grid">
+      <div class="why__main">
+      <div class="voices">
+        <figure class="voice rv"><p class="voice__t">Есть где подождать</p><blockquote>«Есть комната ожидания с диванчиком.»</blockquote><figcaption>Янис Дмитриев</figcaption></figure>
+      </div>
+      <p class="voices__note rv">Так пишут клиенты в отзывах на Яндекс Картах. А ещё у нас:</p>
+      <ul class="perks">
+        <li class="perk rv"><span class="perk__ico"><svg class="ico" aria-hidden="true"><use href="#i-card"/></svg></span><b>Оплата картой</b></li>
+        <li class="perk rv"><span class="perk__ico"><svg class="ico" aria-hidden="true"><use href="#i-park"/></svg></span><b>Парковка</b></li>
+        <li class="perk rv"><span class="perk__ico"><svg class="ico" aria-hidden="true"><use href="#i-dog"/></svg></span><b>Можно с собакой</b></li>
+        <li class="perk rv"><span class="perk__ico"><svg class="ico" aria-hidden="true"><use href="#i-wc"/></svg></span><b>Туалет</b></li>
+        <li class="perk rv"><span class="perk__ico"><svg class="ico" aria-hidden="true"><use href="#i-gift"/></svg></span><b>Подарочный сертификат</b></li>
+        <li class="perk rv"><span class="perk__ico"><svg class="ico" aria-hidden="true"><use href="#i-lang"/></svg></span><b>Русификация автомобилей</b></li>
+      </ul>
+      </div>
+      <figure class="why__photo rv">
+        <picture><source type="image/webp" srcset="img/opt/workshop-tools-640.webp 640w, img/gallery/workshop-tools.webp 960w" sizes="(min-width: 992px) 30vw, 100vw">
+          <img src="img/gallery/workshop-tools.webp" width="960" height="1280" loading="lazy" decoding="async" alt="Рабочая зона: стеллаж с инструментом, пресс, тележка"></picture>
+        <figcaption>Рабочая зона</figcaption>
+      </figure>
+      </div>
+    </div>
+  </section>
+
   <!-- ФОРМА -->
   <section class="section lead" id="lead" aria-labelledby="lead-title">
     <div class="wrap">
       <div class="head rv">
-        <span class="kicker"><i>06</i>Запись</span>
         <h2 id="lead-title">Записаться в сервис</h2>
       </div>
       <div class="lead__grid">
@@ -910,7 +912,6 @@ ul,ol{margin:0;padding:0;list-style:none}
           <a class="big-phone js-call" data-phone="text" href="tel:+79530977790">+7 953 097 77 90</a>
           <p style="font-size:15px">Ежедневно 09:00–20:00</p>
           <div class="ticket__btns">
-            <a class="btn btn--primary js-call" data-phone href="tel:+79530977790"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg>Позвонить</a>
             <a class="btn btn--ghost js-wa" data-wa href="https://wa.me/79530977790" target="_blank" rel="noopener"><img class="lg lg--b" src="https://trace-logos.ru/assets/logos/svgs/whatsapp.svg" alt="" aria-hidden="true" width="22" height="22" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.hidden=true;this.closest('a').classList.add('lg-off')">WhatsApp</a>
           </div>
         </aside>
@@ -949,52 +950,11 @@ ul,ol{margin:0;padding:0;list-style:none}
     </div>
   </section>
 
-  <!-- FAQ -->
-  <section class="section faq" id="faq" aria-labelledby="faq-title">
-    <div class="wrap">
-      <div class="head rv">
-        <span class="kicker">Вопросы</span>
-        <h2 id="faq-title">Вопросы об автосервисе и диагностике подвески</h2>
-      </div>
-      <div class="faq-list rv">
-        <details class="faq-item">
-          <summary class="faq-q">Что такое вибростенд и зачем он нужен?</summary>
-          <div class="faq-a"><p>Вибростенд это стенд, который раскачивает колёса автомобиля; по результатам колебаний можно судить о состоянии подвески и искать источник стука. Диагностика подвески на вибростенде в «Вибростенд Гараж Молл» стоит от 3 000 ₽. Итоговая стоимость зависит от автомобиля и объёма работ, точнее скажут по телефону <a class="js-call" data-phone="text" href="tel:+79530977790">+7 953 097 77 90</a>.</p></div>
-        </details>
-        <details class="faq-item">
-          <summary class="faq-q">Сколько стоят услуги?</summary>
-          <div class="faq-a"><p>Цены от: замена масла от 500 ₽, ремонт ходовой от 2 000 ₽, диагностика подвески на вибростенде от 3 000 ₽, проточка тормозных дисков от 4 000 ₽. Итоговая стоимость зависит от автомобиля и объёма работ, точнее скажут по телефону. Диагностика электрики: стоимость уточняйте по телефону.</p></div>
-        </details>
-        <details class="faq-item">
-          <summary class="faq-q">В подвеске появился стук или скрип, что делать?</summary>
-          <div class="faq-a"><p>Такие симптомы могут быть связаны с состоянием подвески, точную причину определяет осмотр и диагностика. Для этого подходит диагностика подвески на вибростенде или диагностика ходовой части. Нужна другая работа? Позвоните, подскажем.</p></div>
-        </details>
-        <details class="faq-item">
-          <summary class="faq-q">Какие автомобили обслуживаются?</summary>
-          <div class="faq-a"><p>По данным карточки на Яндекс Картах: легковые автомобили, отечественные и импортные. Возможность работы с вашей моделью лучше уточнить по телефону.</p></div>
-        </details>
-        <details class="faq-item">
-          <summary class="faq-q">Можно ли проточить тормозные диски?</summary>
-          <div class="faq-a"><p>Не всегда: это зависит от износа и минимальной допустимой толщины диска, которую указывает производитель. Если диск слишком тонкий или повреждён, его меняют. Решение принимают после осмотра. Проточка тормозных дисков от 4 000 ₽, итоговая стоимость зависит от автомобиля и объёма работ.</p></div>
-        </details>
-        <details class="faq-item">
-          <summary class="faq-q">Какая оплата и есть ли парковка?</summary>
-          <div class="faq-a"><p>Оплата картой, есть парковка и туалет, можно с собакой, есть подарочный сертификат.</p></div>
-        </details>
-        <details class="faq-item">
-          <summary class="faq-q">Как приехать и когда вы работаете?</summary>
-          <div class="faq-a"><p>Адрес: пос. Индустриальный, Евдокимовская ул., 4, Краснодар. Работаем ежедневно с 09:00 до 20:00. Телефон <a class="js-call" data-phone="text" href="tel:+79530977790">+7 953 097 77 90</a>, есть <a class="js-wa" data-wa href="https://wa.me/79530977790" target="_blank" rel="noopener"><img class="lg lg--s" src="https://trace-logos.ru/assets/logos/svgs/whatsapp.svg" alt="" aria-hidden="true" width="16" height="16" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.hidden=true">WhatsApp</a>. На Яндекс Картах кнопка <a href="https://yandex.ru/maps/org/205484445084" target="_blank" rel="noopener">«Как доехать»</a>.</p></div>
-        </details>
-      </div>
-    </div>
-  </section>
-
   <!-- КОНТАКТЫ -->
   <section class="section" id="contacts" aria-labelledby="contacts-title">
     <div class="wrap contacts__grid">
       <div class="rv">
         <div class="head" style="margin-bottom:28px">
-          <span class="kicker"><i>07</i>Как нас найти</span>
           <h2 id="contacts-title">Контакты</h2>
         </div>
         <p class="addr">Евдокимовская улица,&nbsp;4<small>городской округ Краснодар, посёлок Индустриальный</small></p>
@@ -1005,7 +965,6 @@ ul,ol{margin:0;padding:0;list-style:none}
         </dl>
         <div class="contacts__btns">
           <a class="btn btn--ghost" href="https://yandex.ru/maps/org/205484445084" target="_blank" rel="noopener"><img class="lg lg--b" src="https://trace-logos.ru/assets/logos/svgs/yandex-maps.svg" alt="" aria-hidden="true" width="22" height="22" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.hidden=true;this.closest('a').classList.add('lg-off')">Как доехать</a>
-          <a class="btn btn--ghost js-call" data-phone href="tel:+79530977790"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg>Позвонить</a>
           <a class="btn btn--ghost js-wa" data-wa href="https://wa.me/79530977790" target="_blank" rel="noopener"><img class="lg lg--b" src="https://trace-logos.ru/assets/logos/svgs/whatsapp.svg" alt="" aria-hidden="true" width="22" height="22" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.hidden=true;this.closest('a').classList.add('lg-off')">WhatsApp</a>
         </div>
       </div>
@@ -1027,16 +986,8 @@ ul,ol{margin:0;padding:0;list-style:none}
 
 <footer class="footer">
   <div class="wrap">
-    <p class="footer__word" aria-hidden="true">ГАРАЖ МОЛЛ</p>
-    <div class="footer__dash" aria-hidden="true"></div>
     <div class="footer__row">
       <p>© <span id="year">2026</span> Вибростенд Гараж Молл — автосервис, Краснодар, Евдокимовская ул., 4 · Ежедневно 09:00–20:00</p>
-      <nav class="footer__links" aria-label="Контакты">
-        <a class="js-call" data-phone="text" href="tel:+79530977790">+7 953 097 77 90</a>
-        <a class="js-wa" data-wa href="https://wa.me/79530977790" target="_blank" rel="noopener"><img class="lg lg--s" src="https://trace-logos.ru/assets/logos/svgs/whatsapp.svg" alt="" aria-hidden="true" width="16" height="16" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.hidden=true">WhatsApp</a>
-        <a href="https://yandex.ru/maps/org/205484445084" target="_blank" rel="noopener"><img class="lg lg--s" src="https://trace-logos.ru/assets/logos/svgs/yandex-maps.svg" alt="" aria-hidden="true" width="16" height="16" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.hidden=true">Яндекс Карты</a>
-        <a href="#top">Наверх</a>
-      </nav>
     </div>
     <!-- Информация об исполнителе (legal/requisites-block.html). Плейсхолдеры [В СКОБКАХ] заполняет владелец, оставить ОДИН вариант: ИП или ООО. -->
     <section class="gm-req" aria-labelledby="gm-req-title">
@@ -1055,7 +1006,7 @@ ul,ol{margin:0;padding:0;list-style:none}
       <div>
         <p><b>Автосервис «Вибростенд Гараж Молл»:</b> г. Краснодар, пос. Индустриальный, Евдокимовская ул., 4</p>
         <p><b>Режим работы:</b> ежедневно 09:00–20:00</p>
-        <p><b>Телефон:</b> <a class="js-call" data-phone="text" href="tel:+79530977790">+7 953 097 77 90</a></p>
+        <p><b>Телефон:</b> +7&nbsp;953&nbsp;097&nbsp;77&nbsp;90</p>
         <p><b>Email:</b> [EMAIL ДЛЯ ОБРАЩЕНИЙ]</p>
       </div>
       <div class="gm-req__wide">
