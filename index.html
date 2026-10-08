@@ -588,6 +588,10 @@ ul,ol{margin:0;padding:0;list-style:none}
 .cookie-btns{display:flex;gap:8px}
 .cookie-btns .btn{flex:1 1 0;min-width:0;min-height:44px;padding:6px 10px;font-size:15px;line-height:1.15}
 @media (min-width:768px){.cookie{bottom:calc(24px + env(safe-area-inset-bottom))}}
+
+/* Увеличенная зона нажатия у телефонных ссылок внутри текста (FAQ, подвал), вёрстка не меняется */
+.faq-a a.js-call,.faq-a a.js-wa,.gm-req a.js-call{position:relative}
+.faq-a a.js-call::after,.faq-a a.js-wa::after,.gm-req a.js-call::after{content:"";position:absolute;inset:-14px -6px}
 </style>
 </head>
 <body>
