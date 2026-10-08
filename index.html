@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  Лендинг «Гараж Молл» (Краснодар) — один файл, CSS/JS инлайн, без сборки.
+  Лендинг «Вибростенд Гараж Молл» (Краснодар) — один файл, CSS/JS инлайн, без сборки.
 
   README / заметки для владельца и разработчика:
   - ТЕЛЕФОН: +7 953 097 77 90 (основной, решение владельца). Задаётся в одном месте: константа PHONE в <script> внизу
@@ -10,7 +10,8 @@
   - ЗАЯВКИ: функция sendLead(data) и константа LEAD_ENDPOINT — TODO(telegram). Пока endpoint пуст,
     форма НЕ отправляется и честно просит позвонить.
   - МЕТРИКА: закомментированный блок в <head>, цели — в функции goal() (клик по телефону, WhatsApp, сабмит формы).
-  - canonical / og:url / og:image — заглушки https://example.com/, заменить на боевой домен.
+  - canonical / og:url / og:image — заглушка https://DOMAIN/, заменить на боевой домен.
+  - Название везде «Вибростенд Гараж Молл». Цены — «от …», услуги только из вывески/каталога (решения владельца в data.md).
   - Иконки, og.jpg, site.webmanifest, robots.txt лежат в корне (готовятся отдельной задачей) — здесь только ссылки.
   - РЕЙТИНГ: как показано на Яндекс Картах — «5,0 · 40 оценок», 30 отзывов. Собственный расчёт по выгрузке не используем.
     Сверить перед запуском [ДАТА СВЕРКИ РЕЙТИНГА]. Значения — константа RATING в JS (+ fallback-текст в HTML с data-rating и aggregateRating в JSON-LD).
@@ -25,10 +26,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Гараж Молл — вибростенд и ремонт ходовой в Краснодаре</title>
-<meta name="description" content="Автосервис «Гараж Молл», Краснодар, пос. Индустриальный, Евдокимовская, 4. Диагностика подвески на вибростенде — 3 000 ₽, ремонт ходовой, замена масла, проточка тормозных дисков. 5,0 · 40 оценок на Яндекс Картах.">
+<title>Вибростенд Гараж Молл — диагностика подвески и ремонт ходовой в Краснодаре</title>
+<meta name="description" content="Автосервис «Вибростенд Гараж Молл», Краснодар, пос. Индустриальный, Евдокимовская, 4. Диагностика подвески на вибростенде — от 3 000 ₽, ремонт ходовой, замена масла, проточка тормозных дисков, диагностика электрики. 5,0 · 40 оценок на Яндекс Картах.">
 <!-- TODO: заменить на боевой домен -->
-<link rel="canonical" href="https://example.com/">
+<link rel="canonical" href="https://DOMAIN/">
 <meta name="theme-color" content="#111417">
 <meta name="format-detection" content="telephone=no">
 <link rel="icon" href="favicon.ico" sizes="any">
@@ -38,12 +39,12 @@
 
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ru_RU">
-<meta property="og:site_name" content="Гараж Молл">
-<meta property="og:title" content="Гараж Молл — вибростенд и ремонт ходовой в Краснодаре">
+<meta property="og:site_name" content="Вибростенд Гараж Молл">
+<meta property="og:title" content="Вибростенд Гараж Молл — диагностика подвески и ремонт ходовой в Краснодаре">
 <meta property="og:description" content="Диагностика подвески на вибростенде, ремонт ходовой, замена масла, проточка тормозных дисков. 5,0 · 40 оценок на Яндекс Картах, 30 отзывов.">
-<meta property="og:url" content="https://example.com/">
-<meta property="og:image" content="https://example.com/og.jpg">
-<meta property="og:image:alt" content="Фасад автосервиса «Гараж Молл» с вывеской «Вибростенд»">
+<meta property="og:url" content="https://DOMAIN/">
+<meta property="og:image" content="https://DOMAIN/og.jpg">
+<meta property="og:image:alt" content="Фасад автосервиса «Вибростенд Гараж Молл» с вывеской">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -57,8 +58,7 @@
 {
   "@context": "https://schema.org",
   "@type": "AutoRepair",
-  "name": "Гараж Молл",
-  "alternateName": "Вибростенд Гараж Молл",
+  "name": "Вибростенд Гараж Молл",
   "image": "img/front.jpg",
   "telephone": "+79530977790",
   "address": {
@@ -77,10 +77,11 @@
     "opens": "09:00", "closes": "20:00"
   }],
   "makesOffer": [
-    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Вибростенд (диагностика подвески)" }, "price": "3000", "priceCurrency": "RUB" },
-    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Ремонт ходовой" }, "price": "2000", "priceCurrency": "RUB" },
-    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Проточка тормозных дисков" }, "price": "4000", "priceCurrency": "RUB" },
-    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Замена масла" }, "price": "500", "priceCurrency": "RUB" }
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Вибростенд (диагностика подвески)" }, "priceSpecification": { "@type": "PriceSpecification", "minPrice": "3000", "priceCurrency": "RUB" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Ремонт ходовой" }, "priceSpecification": { "@type": "PriceSpecification", "minPrice": "2000", "priceCurrency": "RUB" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Проточка тормозных дисков" }, "priceSpecification": { "@type": "PriceSpecification", "minPrice": "4000", "priceCurrency": "RUB" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Диагностика электрики" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Замена масла" }, "priceSpecification": { "@type": "PriceSpecification", "minPrice": "500", "priceCurrency": "RUB" } }
   ]
 }
 </script>
@@ -279,7 +280,10 @@ ul,ol{margin:0;padding:0;list-style:none}
 .board__name h3{font-size:19px}
 .board__name::after{content:"";flex:1 1 24px;min-width:16px;border-bottom:2px dotted var(--line-2);transform:translateY(-4px)}
 .board__price{font:400 24px/1 var(--display);white-space:nowrap}
-.board__meta{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 16px;color:var(--muted);font-size:14px}
+.board__price--ask{font:600 15px/1.2 var(--text);color:var(--muted)}
+.feature__price small{font-size:.45em;vertical-align:.35em;margin-right:.1em;color:var(--fg-2)}
+.h1__name{display:block;font:600 14px/1.2 var(--text);letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+.board__meta{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-start;gap:8px 16px;color:var(--muted);font-size:14px}
 .board__link{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding-inline:4px;margin-inline:-4px;color:var(--accent-2);font-weight:700;font-size:15px;text-decoration:none;border-radius:8px}
 .board__link .ico{width:18px;height:18px;transition:transform .2s var(--ease)}
 .board__link:hover .ico{transform:translateX(4px)}
@@ -565,6 +569,7 @@ ul,ol{margin:0;padding:0;list-style:none}
   <symbol id="i-gift" viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v14M19 12v10H5V12M7.5 8a2.5 2.5 0 0 1 0-5C11 3 12 8 12 8s1-5 4.5-5a2.5 2.5 0 0 1 0 5"/></symbol>
   <symbol id="i-lang" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4M7 9h4M9 9v5M13 14l2-5 2 5M13.6 12.6h2.8"/></symbol>
   <symbol id="i-award" viewBox="0 0 24 24"><circle cx="12" cy="9" r="6"/><path d="M8.5 13.9L7 22l5-3 5 3-1.5-8.1"/></symbol>
+ <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></symbol>
  <symbol id="i-drop" viewBox="0 0 24 24"><path d="M12 2.7s-6 6.6-6 11.3a6 6 0 0 0 12 0C18 9.3 12 2.7 12 2.7z"/></symbol>
   <symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4.5v15l12-7.5z" fill="currentColor" stroke="none"/></symbol>
   <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></symbol>
@@ -574,9 +579,9 @@ ul,ol{margin:0;padding:0;list-style:none}
 
 <header class="header" id="header">
   <div class="wrap header__in">
-    <a class="logo" href="#top" aria-label="Гараж Молл — в начало страницы">
+    <a class="logo" href="#top" aria-label="Вибростенд Гараж Молл — в начало страницы">
       <span class="logo__mark" aria-hidden="true"><svg class="ico"><use href="#i-wave"/></svg></span>
-      <span class="logo__txt"><b>ГАРАЖ МОЛЛ</b><small>вибростенд · СТО</small></span>
+      <span class="logo__txt"><small>Вибростенд</small><b>ГАРАЖ МОЛЛ</b></span>
     </a>
     <nav class="nav" aria-label="Разделы">
       <a href="#prices">Цены</a>
@@ -588,7 +593,7 @@ ul,ol{margin:0;padding:0;list-style:none}
     </nav>
     <div class="header__cta">
       <a class="header__phone js-call" data-phone="text" href="tel:+79530977790">+7 953 097 77 90</a>
-      <a class="call-ico js-call" data-phone href="tel:+79530977790" aria-label="Позвонить в Гараж Молл"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg></a>
+      <a class="call-ico js-call" data-phone href="tel:+79530977790" aria-label="Позвонить в Вибростенд Гараж Молл"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg></a>
     </div>
   </div>
 </header>
@@ -601,7 +606,7 @@ ul,ol{margin:0;padding:0;list-style:none}
         <picture>
           <source type="image/webp" srcset="img/opt/hero-640.webp 640w, img/opt/hero-960.webp 960w" sizes="(min-width: 992px) 46vw, 100vw">
           <img src="img/opt/hero-960.webp" width="960" height="1280" fetchpriority="high" decoding="async"
-               alt="Автомобиль на подъёмнике с двумя вибростендами Vibr-Car">
+               alt="Автомобиль на подъёмнике с двумя вибростендами Vibr-Car в автосервисе «Вибростенд Гараж Молл»">
         </picture>
         <p class="hero__tag"><svg class="ico" aria-hidden="true"><use href="#i-wave"/></svg>Два вибростенда Vibr-Car</p>
       </div>
@@ -611,13 +616,13 @@ ul,ol{margin:0;padding:0;list-style:none}
           <span class="stars" aria-hidden="true">★★★★★</span>
           <span class="rating__src"><span data-rating="votes">40 оценок на Яндекс Картах</span> · <span data-rating="reviews">30 отзывов</span></span>
         </a>
-        <h1 id="hero-title">Диагностика подвески <em>на&nbsp;вибростенде</em> в&nbsp;Краснодаре</h1>
-        <p class="hero__sub">Автосервис «Гараж Молл»: проверяем ходовую на вибростенде и ремонтируем её, меняем масло, протачиваем тормозные диски.</p>
+        <h1 id="hero-title"><span class="h1__name">Вибростенд Гараж Молл</span> Диагностика подвески <em>на&nbsp;вибростенде</em> в&nbsp;Краснодаре</h1>
+        <p class="hero__sub">Проверяем подвеску на вибростенде, диагностируем и ремонтируем ходовую, меняем масло, протачиваем тормозные диски, диагностируем электрику.</p>
         <a class="proof" href="#reviews"><span class="proof__q">«Ребята нашли причину стука за пол часа, которую я искал несколько лет.»</span><span class="proof__a">Янис Дмитриев, отзыв на Яндекс Картах<svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
         <ul class="hero__prices" aria-label="Цены">
-          <li><span>Вибростенд</span><b>3&nbsp;000&nbsp;₽</b></li>
-          <li><span>Ремонт ходовой</span><b>2&nbsp;000&nbsp;₽</b></li>
-          <li><span>Замена масла</span><b>500&nbsp;₽</b></li>
+          <li><span>Вибростенд</span><b>от 3&nbsp;000&nbsp;₽</b></li>
+          <li><span>Ремонт ходовой</span><b>от 2&nbsp;000&nbsp;₽</b></li>
+          <li><span>Замена масла</span><b>от 500&nbsp;₽</b></li>
         </ul>
         <div class="hero__ctas">
           <a class="btn btn--primary js-call" data-phone href="tel:+79530977790"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg>Позвонить</a>
@@ -634,7 +639,7 @@ ul,ol{margin:0;padding:0;list-style:none}
       <div class="head rv">
         <span class="kicker"><i>01</i>Услуги и цены</span>
         <h2 id="prices-title">Что делаем и сколько стоит</h2>
-        <p>Цены из нашего каталога. Каждая — за единицу работы: одну услугу или одну деталь.</p>
+        <p>Цены из нашего каталога. Итоговая стоимость зависит от автомобиля и объёма работ, точнее скажут по телефону.</p>
       </div>
       <div class="prices__grid">
         <article class="feature rv">
@@ -645,7 +650,7 @@ ul,ol{margin:0;padding:0;list-style:none}
           <span class="feature__tag">Вибростенд</span>
           <h3>Диагностика подвески на вибростенде</h3>
           <p>Если машина стала хуже проходить неровности, появились стуки или раскачка — начните с проверки на стенде.</p>
-          <div class="feature__price"><b>3&nbsp;000&nbsp;₽</b><span>за единицу работы</span></div>
+          <div class="feature__price"><b><small>от</small> 3&nbsp;000&nbsp;₽</b></div>
           <div class="feature__ctas">
             <a class="btn btn--primary" href="#lead" data-service="Вибростенд (диагностика подвески)">Записаться<svg class="ico ico-arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
             <a class="btn btn--ghost" href="#how">Как проходит</a>
@@ -655,22 +660,28 @@ ul,ol{margin:0;padding:0;list-style:none}
           <div class="board__row">
             <picture class="board__thumb"><img src="img/opt/suspension-work-thumb.webp" width="192" height="192" loading="lazy" decoding="async" alt="Автомобиль на подъёмнике, работа с передней подвеской"></picture>
             <div class="board__name"><h3>Ремонт ходовой</h3></div>
-            <p class="board__price">2&nbsp;000&nbsp;₽</p>
-            <div class="board__meta"><span>за единицу работы</span><a class="board__link" href="#lead" data-service="Ремонт ходовой">Записаться<svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a></div>
+            <p class="board__price">от 2&nbsp;000&nbsp;₽</p>
+            <div class="board__meta"><a class="board__link" href="#lead" data-service="Ремонт ходовой">Записаться<svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a></div>
           </div>
           <div class="board__row">
             <picture class="board__thumb"><img src="img/opt/brake-disc-thumb.webp" width="192" height="192" loading="lazy" decoding="async" alt="Тормозной диск и суппорт на снятом колесе"></picture>
             <div class="board__name"><h3>Проточка тормозных дисков</h3></div>
-            <p class="board__price">4&nbsp;000&nbsp;₽</p>
-            <div class="board__meta"><span>за единицу работы</span><a class="board__link" href="#lead" data-service="Проточка тормозных дисков">Записаться<svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a></div>
+            <p class="board__price">от 4&nbsp;000&nbsp;₽</p>
+            <div class="board__meta"><a class="board__link" href="#lead" data-service="Проточка тормозных дисков">Записаться<svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a></div>
           </div>
           <div class="board__row">
             <span class="board__thumb board__thumb--ico" aria-hidden="true"><svg class="ico"><use href="#i-drop"/></svg></span>
             <div class="board__name"><h3>Замена масла</h3></div>
-            <p class="board__price">500&nbsp;₽</p>
-            <div class="board__meta"><span>за единицу работы</span><a class="board__link" href="#lead" data-service="Замена масла">Записаться<svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a></div>
+            <p class="board__price">от 500&nbsp;₽</p>
+            <div class="board__meta"><a class="board__link" href="#lead" data-service="Замена масла">Записаться<svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a></div>
           </div>
-          <p class="board__foot">Стоимость для вашей машины уточняйте по телефону <a class="js-call" data-phone="text" href="tel:+79530977790">+7 953 097 77 90</a></p>
+          <div class="board__row">
+            <span class="board__thumb board__thumb--ico" aria-hidden="true"><svg class="ico"><use href="#i-bolt"/></svg></span>
+            <div class="board__name"><h3>Диагностика электрики</h3></div>
+            <p class="board__price board__price--ask">по телефону</p>
+            <div class="board__meta"><a class="board__link" href="#lead" data-service="Диагностика электрики">Записаться<svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a></div>
+          </div>
+          <p class="board__foot">Нужна другая работа? Позвоните, подскажем: <a class="js-call" data-phone="text" href="tel:+79530977790">+7 953 097 77 90</a></p>
         </div>
       </div>
       <p class="brands rv"><svg class="ico" aria-hidden="true" style="color:var(--accent)"><use href="#i-info"/></svg><span>Марки: <b>отечественные и импортные легковые автомобили</b></span></p>
@@ -732,7 +743,7 @@ ul,ol{margin:0;padding:0;list-style:none}
         <figure class="shot rv"><picture><source type="image/webp" srcset="img/opt/vibrostend-bmw-m4-640.webp 640w, img/gallery/vibrostend-bmw-m4.webp 960w" sizes="(min-width: 992px) 25vw, 70vw"><img src="img/gallery/vibrostend-bmw-m4.webp" width="960" height="1280" loading="lazy" decoding="async" alt="Автомобиль на вибростенде, крупно колесо и пульт"></picture><figcaption>Колесо и пульт стенда</figcaption></figure>
       </div>
       <div class="how__cta rv">
-        <p>Диагностика на вибростенде — <b>3&nbsp;000&nbsp;₽</b></p>
+        <p>Диагностика на вибростенде — <b>от 3&nbsp;000&nbsp;₽</b></p>
         <a class="btn btn--primary" href="#lead" data-service="Вибростенд (диагностика подвески)">Записаться на вибростенд<svg class="ico ico-arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </div>
     </div>
@@ -902,7 +913,7 @@ ul,ol{margin:0;padding:0;list-style:none}
         <dl class="facts">
           <div><dt>Телефон</dt><dd><a class="js-call" data-phone="text" href="tel:+79530977790">+7 953 097 77 90</a></dd></div>
           <div><dt>Часы</dt><dd>Ежедневно 09:00–20:00</dd></div>
-          <div><dt>Ориентир</dt><dd>Вывеска «Гараж Молл · Вибростенд», ворота с надписью СТО</dd></div>
+          <div><dt>Ориентир</dt><dd>Вывеска «ГАРАЖ МОЛЛ ВИБРОСТЕНД», ворота с надписью СТО</dd></div>
         </dl>
         <div class="contacts__btns">
           <a class="btn btn--primary" href="https://yandex.ru/maps/org/205484445084" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-route"/></svg>Как доехать</a>
@@ -918,9 +929,9 @@ ul,ol{margin:0;padding:0;list-style:none}
         </picture>
         <picture class="place__inset">
           <img src="img/front.jpg" width="960" height="1280" loading="lazy" decoding="async"
-               alt="Фасад автосервиса «Гараж Молл» с вывеской и надписью СТО на воротах">
+               alt="Фасад автосервиса «Вибростенд Гараж Молл» с вывеской и надписью СТО на воротах">
         </picture>
-        <figcaption class="place__pin"><svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg><span><b>Гараж Молл</b><span>Евдокимовская, 4 · пос. Индустриальный</span></span></figcaption>
+        <figcaption class="place__pin"><svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg><span><b>Вибростенд Гараж Молл</b><span>Евдокимовская, 4 · пос. Индустриальный</span></span></figcaption>
       </figure>
     </div>
   </section>
@@ -931,7 +942,7 @@ ul,ol{margin:0;padding:0;list-style:none}
     <p class="footer__word" aria-hidden="true">ГАРАЖ МОЛЛ</p>
     <div class="footer__dash" aria-hidden="true"></div>
     <div class="footer__row">
-      <p>© <span id="year">2026</span> Гараж Молл — автосервис, Краснодар, Евдокимовская ул., 4 · Ежедневно 09:00–20:00</p>
+      <p>© <span id="year">2026</span> Вибростенд Гараж Молл — автосервис, Краснодар, Евдокимовская ул., 4 · Ежедневно 09:00–20:00</p>
       <nav class="footer__links" aria-label="Контакты">
         <a class="js-call" data-phone="text" href="tel:+79530977790">+7 953 097 77 90</a>
         <a class="js-wa" data-wa href="https://wa.me/79530977790" target="_blank" rel="noopener">WhatsApp</a>
