@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Шаблон. Заменить DOMAIN на боевой домен (https, итоговое зеркало с www или без) и lastmod на дату публикации. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://DOMAIN/</loc>
+    <lastmod>2026-10-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <!-- privacy.html делает Феофан (TASK-006). Раскомментировать, когда страница будет на сервере.
+  <url>
+    <loc>https://DOMAIN/privacy.html</loc>
+    <lastmod>2026-10-08</lastmod>
+  </url>
+  -->
+</urlset>
