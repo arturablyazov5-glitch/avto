@@ -29,6 +29,7 @@ jobs:
           cp favicon.svg favicon.ico apple-touch-icon.png og.jpg _site/ 2>/dev/null || true
           [ -f sitemap.xml ] && cp sitemap.xml _site/ || true
           cp -r img _site/img
+          cp -r fonts _site/fonts
           touch _site/.nojekyll
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3

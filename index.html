@@ -46,9 +46,12 @@
 <meta property="og:image" content="https://DOMAIN/og.jpg">
 <meta property="og:image:alt" content="Фасад автосервиса «Вибростенд Гараж Молл» с вывеской">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap">
+<link rel="preload" href="fonts/russo-one-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+/* Russo One (SIL OFL), свой хостинг: без запросов к Google Fonts */
+@font-face{font-family:'Russo One';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/russo-one-cyrillic.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'Russo One';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/russo-one-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+</style>
 <link rel="preload" as="image" type="image/webp"
       imagesrcset="img/opt/hero-640.webp 640w, img/opt/hero-960.webp 960w"
       imagesizes="(min-width: 992px) 46vw, 100vw" fetchpriority="high">
