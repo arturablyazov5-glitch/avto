@@ -55,3 +55,12 @@
 - Видео в галерее по ссылке получить не удалось (грузится скриптом); нужны файлы или прямые ссылки от владельца.
 - Использовать в alt только описание из списка, ничего не домысливать (марки машин клиентов не называть как «обслуживаем»; в alt можно «автомобиль на подъёмнике»).
 - Не использовать: фото с читаемыми номерами (4, 13, 14, 19, 22 в нашей нумерации) и фото колёс на полке (неясно, услуга ли это).
+
+
+## ВИДЕО (из галереи Яндекс Карт; всего 7 роликов, вертикальные, отобраны 4 без читаемых номеров)
+- bmw-on-vibrostend: плеер https://runtime.strm.yandex.ru/player/video/vplvm2zz3pqy7zzuvi57 ; постер img/video/bmw-on-vibrostend.webp (468x854)
+- wheel-torque: плеер https://runtime.strm.yandex.ru/player/video/vplv7gx4irel2hfbmaqs ; постер img/video/wheel-torque.webp (468x854)
+- mercedes-on-vibrostend: плеер https://runtime.strm.yandex.ru/player/video/vplvrtvwjkqil7j2tvsu ; постер img/video/mercedes-on-vibrostend.webp (540x960)
+- bmw-m4-on-vibrostend: плеер https://runtime.strm.yandex.ru/player/video/vplvjfk7idwvx2zymufv ; постер img/video/bmw-m4-on-vibrostend.webp (540x720)
+- Как встраивать: click-to-load: сначала локальный постер + кнопка play, по клику подставить <iframe src=плеер allow=autoplay; fullscreen; loading=lazy> в контейнер с aspect-ratio 9/16 (для 1 и 2: 468x854, у остальных 3:4 или 9/16 по постеру). Не грузить iframe до клика (вес и трекинг). Обязательно протестировать, что плеер Яндекса играет внутри iframe на нашей странице; если не играет (запрет встраивания), заменить на ссылку «Смотреть видео на Яндекс Картах» -> https://yandex.ru/maps/org/vibrostend_garazh_moll/205484445084/gallery/. Файлы видео не скачиваются (стрим).
+- Не использовать ролики 4, 6, 7 (в кадре читаемые номера, или нет смысла).
