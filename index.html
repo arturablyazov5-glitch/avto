@@ -12,8 +12,8 @@
   - МЕТРИКА: закомментированный блок в <head>, цели — в функции goal() (клик по телефону, WhatsApp, сабмит формы).
   - canonical / og:url / og:image — заглушки https://example.com/, заменить на боевой домен.
   - Иконки, og.jpg, site.webmanifest, robots.txt лежат в корне (готовятся отдельной задачей) — здесь только ссылки.
-  - РЕЙТИНГ: «4,9 · 30 отзывов» — по выгрузке отзывов (29×5★, 1×2★); на самих Картах показано «5,0 по 40 оценкам».
-    Сверить перед запуском. Значение в одном месте: константа RATING в JS (+ fallback-текст в HTML с data-rating и aggregateRating в JSON-LD).
+  - РЕЙТИНГ: как показано на Яндекс Картах — «5,0 · 40 оценок», 30 отзывов. Собственный расчёт по выгрузке не используем.
+    Сверить перед запуском [ДАТА СВЕРКИ РЕЙТИНГА]. Значения — константа RATING в JS (+ fallback-текст в HTML с data-rating и aggregateRating в JSON-LD).
   - «Хорошее место 2026» — со скрина карточки Яндекс Карт, сверить.
   - Часы: ежедневно 09:00–20:00 (график с Яндекс Карт). Праздники не указаны.
   - Отзывы — дословно из выгрузки agent-context/reviews.md (эмодзи убраны), 8 шт. из подборки в data.md.
@@ -26,7 +26,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Гараж Молл — вибростенд и ремонт ходовой в Краснодаре</title>
-<meta name="description" content="Автосервис «Гараж Молл», Краснодар, пос. Индустриальный, Евдокимовская, 4. Диагностика подвески на вибростенде — 3 000 ₽, ремонт ходовой, замена масла, проточка тормозных дисков. 4,9 на Яндекс Картах, 30 отзывов.">
+<meta name="description" content="Автосервис «Гараж Молл», Краснодар, пос. Индустриальный, Евдокимовская, 4. Диагностика подвески на вибростенде — 3 000 ₽, ремонт ходовой, замена масла, проточка тормозных дисков. 5,0 · 40 оценок на Яндекс Картах.">
 <!-- TODO: заменить на боевой домен -->
 <link rel="canonical" href="https://example.com/">
 <meta name="theme-color" content="#111417">
@@ -40,7 +40,7 @@
 <meta property="og:locale" content="ru_RU">
 <meta property="og:site_name" content="Гараж Молл">
 <meta property="og:title" content="Гараж Молл — вибростенд и ремонт ходовой в Краснодаре">
-<meta property="og:description" content="Диагностика подвески на вибростенде, ремонт ходовой, замена масла, проточка тормозных дисков. 4,9 · 30 отзывов на Яндекс Картах.">
+<meta property="og:description" content="Диагностика подвески на вибростенде, ремонт ходовой, замена масла, проточка тормозных дисков. 5,0 · 40 оценок на Яндекс Картах, 30 отзывов.">
 <meta property="og:url" content="https://example.com/">
 <meta property="og:image" content="https://example.com/og.jpg">
 <meta property="og:image:alt" content="Фасад автосервиса «Гараж Молл» с вывеской «Вибростенд»">
@@ -70,7 +70,7 @@
   "geo": { "@type": "GeoCoordinates", "latitude": 45.098096, "longitude": 39.094303 },
   "hasMap": "https://yandex.ru/maps/org/205484445084",
   "paymentAccepted": "Банковская карта",
-  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "30", "bestRating": "5", "worstRating": "1" },
+  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "5.0", "ratingCount": "40", "reviewCount": "30", "bestRating": "5", "worstRating": "1" },
   "openingHoursSpecification": [{
     "@type": "OpeningHoursSpecification",
     "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
@@ -606,9 +606,9 @@ ul,ol{margin:0;padding:0;list-style:none}
       </div>
       <div class="hero__body">
         <a class="rating" href="#reviews">
-          <span class="rating__score" data-rating="value">4,9</span>
+          <span class="rating__score" data-rating="value">5,0</span>
           <span class="stars" aria-hidden="true">★★★★★</span>
-          <span class="rating__src" data-rating="text">30 отзывов на Яндекс Картах</span>
+          <span class="rating__src"><span data-rating="votes">40 оценок на Яндекс Картах</span> · <span data-rating="reviews">30 отзывов</span></span>
         </a>
         <h1 id="hero-title">Диагностика подвески <em>на&nbsp;вибростенде</em> в&nbsp;Краснодаре</h1>
         <p class="hero__sub">Автосервис «Гараж Молл»: проверяем ходовую на вибростенде и ремонтируем её, меняем масло, протачиваем тормозные диски.</p>
@@ -789,10 +789,10 @@ ul,ol{margin:0;padding:0;list-style:none}
           <p>Отзывы с Яндекс Карт — дословно, без правок.</p>
         </div>
         <div class="score rv">
-          <span class="score__num" data-rating="value">4,9</span>
+          <span class="score__num" data-rating="value">5,0</span>
           <div class="score__meta">
             <span class="stars" aria-hidden="true">★★★★★</span>
-            <span data-rating="text">30 отзывов на Яндекс Картах</span>
+            <span><span data-rating="votes">40 оценок на Яндекс Картах</span> · <span data-rating="reviews">30 отзывов</span></span>
             <a href="https://yandex.ru/maps/org/205484445084" target="_blank" rel="noopener">Открыть на Яндекс Картах<svg class="ico" aria-hidden="true" style="width:18px;height:18px"><use href="#i-arrow"/></svg></a>
           </div>
           <span class="award"><svg class="ico" aria-hidden="true"><use href="#i-award"/></svg>«Хорошее место 2026» на Яндекс Картах</span>
@@ -955,8 +955,8 @@ ul,ol{margin:0;padding:0;list-style:none}
   var PHONE_E164 = '+' + PHONE.replace(/\D/g, '');          // +79530977790
   var WA_URL = 'https://wa.me/' + PHONE_E164.slice(1);      // WhatsApp на том же номере (подтверждено сайтом клиента)
 
-  /* ===== Рейтинг: одно место. Сверить с Яндекс Картами перед запуском (по выгрузке 4,9 / 30 отзывов, на Картах 5,0 / 40 оценок). ===== */
-  var RATING = { value: '4,9', text: '30 отзывов на Яндекс Картах' };
+  /* ===== Рейтинг: одно место, ровно как на Яндекс Картах. Сверить перед запуском. JSON-LD aggregateRating держать в тех же значениях. ===== */
+  var RATING = { value: '5,0', votes: '40 оценок на Яндекс Картах', reviews: '30 отзывов' };
   document.querySelectorAll('[data-rating]').forEach(function (el) { el.textContent = RATING[el.getAttribute('data-rating')]; });
 
   /* ===== TODO(telegram): сюда URL приёмника заявок (бот/воркер). Пока пусто — заявки не отправляются. ===== */
