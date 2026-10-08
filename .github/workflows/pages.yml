@@ -1,0 +1,38 @@
+name: Deploy site to GitHub Pages
+
+on:
+  push:
+    branches: [claude/affectionate-bardeen-xw3q9q, main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Collect public files only
+        run: |
+          mkdir _site
+          cp index.html privacy.html robots.txt site.webmanifest _site/
+          cp favicon.svg favicon.ico apple-touch-icon.png og.jpg _site/ 2>/dev/null || true
+          [ -f sitemap.xml ] && cp sitemap.xml _site/ || true
+          cp -r img _site/img
+          touch _site/.nojekyll
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - id: deployment
+        uses: actions/deploy-pages@v4
