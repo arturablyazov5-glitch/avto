@@ -12,8 +12,11 @@
   - МЕТРИКА: закомментированный блок в <head>, цели — в функции goal() (клик по телефону, WhatsApp, сабмит формы).
   - canonical / og:url / og:image — заглушки https://example.com/, заменить на боевой домен.
   - Иконки, og.jpg, site.webmanifest, robots.txt лежат в корне (готовятся отдельной задачей) — здесь только ссылки.
-  - Рейтинг/оценки/«Хорошее место 2026»/«до 20:00» прочитаны с мелкого скрина карточки Яндекс Карт — сверить при запуске.
-    Полного расписания нет — блок часов работы намеренно не делаем, JSON-LD без openingHours.
+  - РЕЙТИНГ: «4,9 · 30 отзывов» — по выгрузке отзывов (29×5★, 1×2★); на самих Картах показано «5,0 по 40 оценкам».
+    Сверить перед запуском. Значение в одном месте: константа RATING в JS (+ fallback-текст в HTML с data-rating и aggregateRating в JSON-LD).
+  - «Хорошее место 2026» — со скрина карточки Яндекс Карт, сверить.
+  - Часы: ежедневно 09:00–20:00 (график с Яндекс Карт). Праздники не указаны.
+  - Отзывы — дословно из выгрузки agent-context/reviews.md (эмодзи убраны), 8 шт. из подборки в data.md.
   - Фото: img/front.jpg (960×1280) + img/front-hd.jpg (1440×1920) и webp-версии img/front-{640,960,1440}.webp.
   - Иконки — свои inline SVG (единый штрих 2px, сетка 24). Внешних логотипов нет.
 -->
@@ -22,7 +25,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Гараж Молл — вибростенд и ремонт ходовой в Краснодаре</title>
-<meta name="description" content="Автосервис «Гараж Молл», Краснодар, пос. Индустриальный, Евдокимовская, 4. Диагностика подвески на вибростенде — 3 000 ₽, ремонт ходовой, замена масла, проточка тормозных дисков. 5,0 на Яндекс Картах.">
+<meta name="description" content="Автосервис «Гараж Молл», Краснодар, пос. Индустриальный, Евдокимовская, 4. Диагностика подвески на вибростенде — 3 000 ₽, ремонт ходовой, замена масла, проточка тормозных дисков. 4,9 на Яндекс Картах, 30 отзывов.">
 <!-- TODO: заменить на боевой домен -->
 <link rel="canonical" href="https://example.com/">
 <meta name="theme-color" content="#111417">
@@ -36,7 +39,7 @@
 <meta property="og:locale" content="ru_RU">
 <meta property="og:site_name" content="Гараж Молл">
 <meta property="og:title" content="Гараж Молл — вибростенд и ремонт ходовой в Краснодаре">
-<meta property="og:description" content="Диагностика подвески на вибростенде, ремонт ходовой, замена масла, проточка тормозных дисков. 5,0 · 40 оценок на Яндекс Картах.">
+<meta property="og:description" content="Диагностика подвески на вибростенде, ремонт ходовой, замена масла, проточка тормозных дисков. 4,9 · 30 отзывов на Яндекс Картах.">
 <meta property="og:url" content="https://example.com/">
 <meta property="og:image" content="https://example.com/og.jpg">
 <meta property="og:image:alt" content="Фасад автосервиса «Гараж Молл» с вывеской «Вибростенд»">
@@ -66,7 +69,12 @@
   "geo": { "@type": "GeoCoordinates", "latitude": 45.098096, "longitude": 39.094303 },
   "hasMap": "https://yandex.ru/maps/org/205484445084",
   "paymentAccepted": "Банковская карта",
-  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "5.0", "ratingCount": "40", "reviewCount": "30", "bestRating": "5" },
+  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "30", "bestRating": "5", "worstRating": "1" },
+  "openingHoursSpecification": [{
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+    "opens": "09:00", "closes": "20:00"
+  }],
   "makesOffer": [
     { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Вибростенд (диагностика подвески)" }, "price": "3000", "priceCurrency": "RUB" },
     { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Ремонт ходовой" }, "price": "2000", "priceCurrency": "RUB" },
@@ -275,7 +283,7 @@ ul,ol{margin:0;padding:0;list-style:none}
 .board__link:hover .ico{transform:translateX(4px)}
 .board__row:hover .board__price{color:var(--accent-2)}
 .board__foot{padding:16px 20px 14px;border-top:1px solid var(--line);color:var(--muted);font-size:15px}
-.board__foot a{display:inline-block;padding-block:10px;margin-block:-10px;font-weight:700;color:var(--fg);text-decoration:none;white-space:nowrap}
+.board__foot a{display:inline-block;padding-block:12px;margin-block:-12px;font-weight:700;color:var(--fg);text-decoration:none;white-space:nowrap}
 .board__foot a:hover{color:var(--accent-2)}
 @media (min-width:768px){.board__row{padding:22px 28px}.board__foot{padding:18px 28px}}
 .brands{margin-top:20px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;color:var(--muted);font-size:15px}
@@ -329,7 +337,7 @@ ul,ol{margin:0;padding:0;list-style:none}
 .award{display:inline-flex;align-items:center;gap:8px;align-self:flex-start;padding:6px 10px;border-radius:8px;background:rgba(255,209,102,.1);color:var(--star);font-size:13px;font-weight:600}
 .award .ico{width:18px;height:18px}
 
-.reviews{display:grid;grid-auto-flow:column;grid-auto-columns:min(86%,420px);gap:12px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;
+.reviews{display:grid;grid-auto-flow:column;grid-auto-columns:min(86%,420px);gap:12px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;align-items:start;
   margin-inline:calc(var(--gutter) * -1);padding:4px var(--gutter) 18px;scroll-padding-inline:var(--gutter);scrollbar-width:thin;scrollbar-color:var(--line-2) transparent}
 .reviews:focus-visible{outline-offset:-3px}
 .review{scroll-snap-align:start;margin:0;display:flex;flex-direction:column;gap:18px;padding:24px 22px;border-radius:var(--r-l);background:var(--card);border:1px solid var(--line);transition:border-color .25s}
@@ -341,21 +349,34 @@ ul,ol{margin:0;padding:0;list-style:none}
 .review figcaption{margin-top:auto;display:flex;align-items:center;gap:12px;padding-top:16px;border-top:1px dashed var(--line-2)}
 .avatar{flex:none;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent);font:400 17px/1 var(--display);text-transform:uppercase}
 .review figcaption span{display:grid;gap:2px;font-size:14px;color:var(--muted)}
-.review figcaption b{color:var(--fg);font-size:16px}
-.review--long blockquote{font-size:17px}
+.review figcaption b{color:var(--fg);font-size:16px;overflow-wrap:anywhere}
 .rev-hint{margin-top:4px;color:var(--muted);font-size:14px;display:flex;align-items:center;gap:8px}
+/* планшет/десктоп: «кирпичная» раскладка колонками — разная длина отзывов без дыр */
 @media (min-width:768px){
-  .reviews{grid-auto-flow:row;grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-columns:auto;overflow:visible;margin:0;padding:0;gap:16px}
+  .reviews{display:block;columns:2;column-gap:16px;overflow:visible;margin:0;padding:0}
+  .review{break-inside:avoid;margin-bottom:16px}
   .rev-hint{display:none}
 }
-@media (min-width:1100px){
-  .reviews{grid-template-columns:minmax(0,1.25fr) minmax(0,1fr) minmax(0,1fr)}
-  .review--long{grid-column:1;grid-row:1/span 2;background:linear-gradient(180deg,var(--card-2),var(--card));padding:32px}
-  .review--long blockquote{font-size:19px}
-  .review:nth-child(1){grid-column:2;grid-row:1}
-  .review:nth-child(3){grid-column:3;grid-row:1}
-  .review:nth-child(4){grid-column:2/span 2;grid-row:2}
-}
+@media (min-width:1100px){.reviews{columns:3;column-gap:20px}.review{margin-bottom:20px}}
+
+/* Цитата-доказательство в hero */
+.proof{display:grid;gap:6px;max-width:46ch;margin:-6px 0 24px;padding:12px 0 12px 16px;border-left:3px solid var(--accent);color:var(--fg);text-decoration:none}
+.proof__q{font-size:16px;font-style:italic;color:var(--fg-2)}
+.proof__a{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--muted)}
+.proof__a .ico{width:16px;height:16px;transition:transform .2s var(--ease)}
+.proof:hover .proof__a{color:var(--accent-2)}
+.proof:hover .ico{transform:translateX(3px)}
+
+/* «Почему к нам»: смыслы из отзывов */
+.voices{display:grid;gap:12px;margin-bottom:22px}
+@media (min-width:768px){.voices{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}}
+.voice{margin:0;display:flex;flex-direction:column;gap:10px;padding:22px;border-radius:var(--r-l);border:1px solid rgba(46,196,207,.4);
+  background:linear-gradient(160deg,rgba(46,196,207,.14),transparent 60%),var(--card)}
+.voice__t{font:400 21px/1.15 var(--display)}
+.voice blockquote{margin:0;color:var(--fg-2);font-size:16px}
+.voice figcaption{margin-top:auto;font-size:14px;color:var(--muted)}
+.voice figcaption::before{content:"— "}
+.voices__note{color:var(--muted);margin:30px 0 16px}
 
 /* ===== Форма ===== */
 .lead{background:var(--bg-2);border-block:1px solid var(--line)}
@@ -365,7 +386,7 @@ ul,ol{margin:0;padding:0;list-style:none}
 .ticket::before{content:"";position:absolute;left:22px;right:22px;top:0;height:4px;background:var(--dash);color:var(--accent)}
 .ticket p{color:var(--muted)}
 .ticket__label{font:600 13px/1 var(--text);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:22px 0 4px}
-.big-phone{display:inline-block;font:400 clamp(26px,7.4vw,36px)/1.2 var(--display);color:var(--fg);text-decoration:none;padding-block:6px;transition:color .2s}
+.big-phone{display:inline-block;font:400 clamp(26px,7.4vw,36px)/1.2 var(--display);color:var(--fg);text-decoration:none;padding-block:7px;transition:color .2s}
 .big-phone:hover{color:var(--accent-2)}
 .ticket__btns{display:grid;gap:10px;margin-top:18px}
 @media (min-width:480px){.ticket__btns{grid-template-columns:repeat(2,max-content)}}
@@ -421,7 +442,7 @@ ul,ol{margin:0;padding:0;list-style:none}
 .facts>div{display:grid;grid-template-columns:110px minmax(0,1fr);gap:12px;padding-block:14px;border-bottom:1px solid var(--line)}
 .facts dt{font:600 12px/1.6 var(--text);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 .facts dd{margin:0;font-size:17px}
-.facts dd a{display:inline-block;padding-block:11px;margin-block:-11px;color:var(--fg);font-weight:700;text-decoration:none}
+.facts dd a{display:inline-block;padding-block:12px;margin-block:-12px;color:var(--fg);font-weight:700;text-decoration:none}
 .facts dd a:hover{color:var(--accent-2)}
 .facts dd small{color:var(--muted);font-size:14px}
 .contacts__btns{display:grid;gap:12px}
@@ -513,12 +534,13 @@ ul,ol{margin:0;padding:0;list-style:none}
       </div>
       <div class="hero__body">
         <a class="rating" href="#reviews">
-          <span class="rating__score">5,0</span>
+          <span class="rating__score" data-rating="value">4,9</span>
           <span class="stars" aria-hidden="true">★★★★★</span>
-          <span class="rating__src">40 оценок на Яндекс Картах</span>
+          <span class="rating__src" data-rating="text">30 отзывов на Яндекс Картах</span>
         </a>
         <h1 id="hero-title">Диагностика подвески <em>на&nbsp;вибростенде</em> в&nbsp;Краснодаре</h1>
         <p class="hero__sub">Автосервис «Гараж Молл»: проверяем ходовую на вибростенде и ремонтируем её, меняем масло, протачиваем тормозные диски.</p>
+        <a class="proof" href="#reviews"><span class="proof__q">«Ребята нашли причину стука за пол часа, которую я искал несколько лет.»</span><span class="proof__a">Янис Дмитриев, отзыв на Яндекс Картах<svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
         <ul class="hero__prices" aria-label="Цены">
           <li><span>Вибростенд</span><b>3&nbsp;000&nbsp;₽</b></li>
           <li><span>Ремонт ходовой</span><b>2&nbsp;000&nbsp;₽</b></li>
@@ -528,7 +550,7 @@ ul,ol{margin:0;padding:0;list-style:none}
           <a class="btn btn--primary js-call" data-phone href="tel:+79530977790"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg>Позвонить</a>
           <a class="btn btn--ghost" href="#lead">Записаться<svg class="ico ico-arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
         </div>
-        <p class="hero__addr"><svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg><span>посёлок Индустриальный, Евдокимовская улица, 4</span></p>
+        <p class="hero__addr"><svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg><span>посёлок Индустриальный, Евдокимовская улица, 4 · ежедневно 09:00–20:00</span></p>
       </div>
     </div>
   </section>
@@ -581,8 +603,14 @@ ul,ol{margin:0;padding:0;list-style:none}
       <div class="head rv">
         <span class="kicker"><i>02</i>Почему к нам</span>
         <h2 id="why-title">Удобно, пока ждёте машину</h2>
-        <p>Базовое и продвинутое сервисное обслуживание — и мелочи, которые делают визит спокойнее.</p>
+        <p>Базовое и продвинутое сервисное обслуживание. Что отмечают клиенты — их словами.</p>
       </div>
+      <div class="voices">
+        <figure class="voice rv"><p class="voice__t">Находят причину стука</p><blockquote>«Ребята нашли причину стука за пол часа, которую я искал несколько лет.»</blockquote><figcaption>Янис Дмитриев</figcaption></figure>
+        <figure class="voice rv"><p class="voice__t">Ничего не навязывают</p><blockquote>«Указали на некритичные проблемы, ничего не навязывали из запчастей и услуг.»</blockquote><figcaption>Максим Стрельцов</figcaption></figure>
+        <figure class="voice rv"><p class="voice__t">Есть где подождать</p><blockquote>«Есть комната ожидания с диванчиком.»</blockquote><figcaption>Янис Дмитриев</figcaption></figure>
+      </div>
+      <p class="voices__note rv">Так пишут клиенты в отзывах на Яндекс Картах. А ещё у нас:</p>
       <ul class="perks">
         <li class="perk rv"><span class="perk__ico"><svg class="ico" aria-hidden="true"><use href="#i-card"/></svg></span><b>Оплата картой</b></li>
         <li class="perk rv"><span class="perk__ico"><svg class="ico" aria-hidden="true"><use href="#i-park"/></svg></span><b>Парковка</b></li>
@@ -622,34 +650,50 @@ ul,ol{margin:0;padding:0;list-style:none}
         <div class="head rv" style="margin:0">
           <span class="kicker"><i>04</i>Отзывы</span>
           <h2 id="reviews-title">Что пишут клиенты</h2>
-          <p>Отзывы с Яндекс Карт — без правок.</p>
+          <p>Отзывы с Яндекс Карт — дословно, без правок.</p>
         </div>
         <div class="score rv">
-          <span class="score__num">5,0</span>
+          <span class="score__num" data-rating="value">4,9</span>
           <div class="score__meta">
-            <span class="stars" aria-label="5 из 5">★★★★★</span>
-            <span>40 оценок · 30 отзывов на Яндекс Картах</span>
+            <span class="stars" aria-hidden="true">★★★★★</span>
+            <span data-rating="text">30 отзывов на Яндекс Картах</span>
             <a href="https://yandex.ru/maps/org/205484445084" target="_blank" rel="noopener">Открыть на Яндекс Картах<svg class="ico" aria-hidden="true" style="width:18px;height:18px"><use href="#i-arrow"/></svg></a>
           </div>
           <span class="award"><svg class="ico" aria-hidden="true"><use href="#i-award"/></svg>«Хорошее место 2026» на Яндекс Картах</span>
         </div>
       </div>
-      <div class="reviews" tabindex="0" role="region" aria-label="Отзывы клиентов, листаются горизонтально">
+      <div class="reviews" tabindex="0" role="region" aria-label="Отзывы клиентов">
         <figure class="review rv">
-          <blockquote>Посчастливилось сломаться в нескольких метрах от сто. Да! Именно посчастливилось, потому что теперь только сюда!!! Замечательные ребята и мастера своего дела! Всем советую!</blockquote>
-          <figcaption><span class="avatar" aria-hidden="true">т</span><span><b>таня ще</b>18 сентября</span></figcaption>
+          <blockquote>Пригнал своего фокуса, пожаловался на вибрации и постукивания, прокатились. Заехали на вибростенд. После получаса тщательной диагностики, мастера указали на явные проблемы с амортизаторами (которые не текут, прошли всего 20 тыс и во всех сервисах мне махали рукой что все отлично с подвеской), плюс ослабла опора двигателя. Выдали рекомендации, ничего не навязывали. Сейчас, после замены, наконец-то, вспомнил что такое нормальный автомобиль. Все вежливо, спокойно и быстро. Стоило своих денег. Спасибо!</blockquote>
+          <figcaption><span class="avatar" aria-hidden="true">Д</span><span><b>Дмитрий</b>22 сентября 2025</span></figcaption>
         </figure>
-        <figure class="review review--long rv">
+        <figure class="review rv">
+          <blockquote>Оцениваю на 5+. Быстро, качественно, демократично. Внимательные и приветливые мастера, приятно общаться. Люди с пониманием своей работы и культурой производства. Инструмент и оснащение СТО в порядке. Проехал не менее 10ти сервисов, в том числе был у официалов. Нигде не могли выявить и устранить неполадку. Приехал сюда, проехались по гравийке, потрясли на вибростенде и сразу нашли и победили дефект. Очень рекомендую, сам буду обращаться.</blockquote>
+          <figcaption><span class="avatar" aria-hidden="true">В</span><span><b>Владислав</b>29 декабря 2025</span></figcaption>
+        </figure>
+        <figure class="review rv">
+          <blockquote>Рекомендую автосервис! Долгое время не мог решить проблему скрипа в подвеске. Поменял большую часть ходовой, проблема осталась. Сегодня записался на проверку ходовой. Проехали с мастером, он все послушал, поставили автомобиль на вибростенд и сразу выявили проблему в недокрученном болте сайлент-блока. Все исправили на месте, теперь авто едет лучше, чем с салона. Так же провели диагностику ходовой части, уделив внимание рулевой рейке, которую на других сервисах мне рекомендовали заменить, а как оказалось, с рейкой нет никаких проблем. Все супер, спасибо! Буду обслуживать автомобиль только здесь!</blockquote>
+          <figcaption><span class="avatar" aria-hidden="true">Л</span><span><b>Лев Толстой</b>17 декабря 2025</span></figcaption>
+        </figure>
+        <figure class="review rv">
+          <blockquote>Случайно нашел данный сервис на Авито. До этого был в 4-х сервисах, где мне приговаривали и меняли все подряд, но ничего не помогало решить проблему посторонних звуков на неровностях. Сегодня решил заехать в Гараж Молл, проблему выявили на вибростенде меньше чем за полчаса, это оказалась подушка двигателя. Вежливое отношение, все понятно объяснят, покажут. Теперь осталось дождаться запчасть и к ним на замену. Большое спасибо, однозначно рекомендую.</blockquote>
+          <figcaption><span class="avatar" aria-hidden="true">m</span><span><b>mikhael.morozov</b>8 июня 2025</span></figcaption>
+        </figure>
+        <figure class="review rv">
+          <blockquote>Выражаю благодарность ребятам потому что за 30 минут решеили проблему которую не могли решить на 3 сто другие мастера! Особую благодарность хочу выразить мастеру на вибростенде это человек который любит свое дело и относится к процессу с вниманием к деталям! Рекомендую сервис тем кто ценит свое время и ищет себе мастера который не будет раскручивать на дополнительные расходы!</blockquote>
+          <figcaption><span class="avatar" aria-hidden="true">С</span><span><b>Сергей К.</b>17 июня 2025</span></figcaption>
+        </figure>
+        <figure class="review rv">
+          <blockquote>Отличный сервис! Долго не мог найти проблему стука в передней части подвески. Приехал сюда, послушали на стенде, сразу выявили проблему которую тут же и устранили. Указали на некритичные проблемы, ничего не навязывали из запчастей и услуг. Очень рад что обратился сюда, спасибо вам большое!</blockquote>
+          <figcaption><span class="avatar" aria-hidden="true">М</span><span><b>Максим Стрельцов</b>28 июня 2025</span></figcaption>
+        </figure>
+        <figure class="review rv">
+          <blockquote>Ребята нашли причину стука за пол часа, которую я искал несколько лет. Поменяли деталь и я наконец-то счастлив. Они точно знают своё дело Есть комната ожидания с диванчиком. Ценник приятный.</blockquote>
+          <figcaption><span class="avatar" aria-hidden="true">Я</span><span><b>Янис Дмитриев</b>29 июня 2025</span></figcaption>
+        </figure>
+        <figure class="review rv">
           <blockquote>Спасибо больше Мастерам за проделанную качественную работу. Обратится с проблемой, что машина начала хуже отрабатывать неровности. (К слову замену амортизаторов делал на днях, а проблема не исчезла) Сначала мастер сам проехался, почувствовал машину, понял проблему и затем поднял на подъёмник. Проблему нашли уже спустя пол минуты диагностики. В тот же час уже и поменяли. Цены очень приятные, пошли на встречу. Уехал довольный, а самое главное устранил поломку. Спасибо!</blockquote>
           <figcaption><span class="avatar" aria-hidden="true">А</span><span><b>Артём</b>5 августа</span></figcaption>
-        </figure>
-        <figure class="review rv">
-          <blockquote>Отличный сервис, уже который раз заезжаем, вопросы решаются оперативно, цены на услуги весьма демократичные, обслуживаю там все три машины</blockquote>
-          <figcaption><span class="avatar" aria-hidden="true">А</span><span><b>Арутюнян А.</b>14 сентября</span></figcaption>
-        </figure>
-        <figure class="review rv">
-          <blockquote>Самый лучший сервис города, ни с каким сервисом не сравнится, уже четвертый раз приезжаю , все аккуратно чисто, люди все очень вежливые, цены адекватные в общем всем советую однозначно</blockquote>
-          <figcaption><span class="avatar" aria-hidden="true">Н</span><span><b>Норо Сафарян</b>3 июля</span></figcaption>
         </figure>
       </div>
       <p class="rev-hint" aria-hidden="true"><svg class="ico" style="width:18px;height:18px"><use href="#i-arrow"/></svg>Листайте вбок</p>
@@ -668,7 +712,7 @@ ul,ol{margin:0;padding:0;list-style:none}
           <p>Быстрее всего — позвонить: договоримся о времени сразу.</p>
           <p class="ticket__label">Телефон</p>
           <a class="big-phone js-call" data-phone="text" href="tel:+79530977790">+7 953 097 77 90</a>
-          <p style="font-size:15px">Работаем до 20:00 — точное время уточняйте по телефону.</p>
+          <p style="font-size:15px">Ежедневно 09:00–20:00</p>
           <div class="ticket__btns">
             <a class="btn btn--primary js-call" data-phone href="tel:+79530977790"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg>Позвонить</a>
             <a class="btn btn--ghost js-wa" data-wa href="https://wa.me/79530977790" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a>
@@ -720,7 +764,7 @@ ul,ol{margin:0;padding:0;list-style:none}
         <p class="addr">Евдокимовская улица,&nbsp;4<small>городской округ Краснодар, посёлок Индустриальный</small></p>
         <dl class="facts">
           <div><dt>Телефон</dt><dd><a class="js-call" data-phone="text" href="tel:+79530977790">+7 953 097 77 90</a></dd></div>
-          <div><dt>Время</dt><dd>Работаем до 20:00 <small>(уточняйте по телефону)</small></dd></div>
+          <div><dt>Часы</dt><dd>Ежедневно 09:00–20:00</dd></div>
           <div><dt>Ориентир</dt><dd>Вывеска «Гараж Молл · Вибростенд», ворота с надписью СТО</dd></div>
         </dl>
         <div class="contacts__btns">
@@ -746,7 +790,7 @@ ul,ol{margin:0;padding:0;list-style:none}
     <p class="footer__word" aria-hidden="true">ГАРАЖ МОЛЛ</p>
     <div class="footer__dash" aria-hidden="true"></div>
     <div class="footer__row">
-      <p>© <span id="year">2026</span> Гараж Молл — автосервис, Краснодар, Евдокимовская ул., 4</p>
+      <p>© <span id="year">2026</span> Гараж Молл — автосервис, Краснодар, Евдокимовская ул., 4 · Ежедневно 09:00–20:00</p>
       <nav class="footer__links" aria-label="Контакты">
         <a class="js-call" data-phone="text" href="tel:+79530977790">+7 953 097 77 90</a>
         <a class="js-wa" data-wa href="https://wa.me/79530977790" target="_blank" rel="noopener">WhatsApp</a>
@@ -770,6 +814,10 @@ ul,ol{margin:0;padding:0;list-style:none}
   var PHONE = '+7 953 097 77 90';
   var PHONE_E164 = '+' + PHONE.replace(/\D/g, '');          // +79530977790
   var WA_URL = 'https://wa.me/' + PHONE_E164.slice(1);      // WhatsApp на том же номере (подтверждено сайтом клиента)
+
+  /* ===== Рейтинг: одно место. Сверить с Яндекс Картами перед запуском (по выгрузке 4,9 / 30 отзывов, на Картах 5,0 / 40 оценок). ===== */
+  var RATING = { value: '4,9', text: '30 отзывов на Яндекс Картах' };
+  document.querySelectorAll('[data-rating]').forEach(function (el) { el.textContent = RATING[el.getAttribute('data-rating')]; });
 
   /* ===== TODO(telegram): сюда URL приёмника заявок (бот/воркер). Пока пусто — заявки не отправляются. ===== */
   var LEAD_ENDPOINT = '';
