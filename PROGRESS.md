@@ -12,13 +12,15 @@
 ## Реестр агентов
 Акакий | Claude opus 5.5 | лендинг | index.html, img/ | 🔨 в работе
 Ипполит | Claude sonnet 5.5 | пакет для Директа | direct/ | 🔨 в работе
-Савелий | Claude sonnet 5.5 | favicon, OG, robots, manifest | корень (кроме index.html) | 🔨 в работе
+Савелий | Claude sonnet 5.5 | favicon, OG, robots, manifest | корень (кроме index.html) | ✅ принято
+Феофан | Claude opus 5.5 | юр. часть (ФЗ-152, ФЗ-38, ЗоЗПП, cookie) | privacy.html, legal/ | 🔨 в работе
 
 ## Задачи
 - TASK-001 ✅ данные собраны прорабом (agent-context/data.md; сеть открыта, из фото на сайте только фасад)
 - TASK-002 🔨 Акакий (Claude opus): index.html + img/, лендинг
 - TASK-004 🔨 Ипполит: direct/campaign.md
-- TASK-005 🔨 Савелий: favicon/OG/robots/manifest
+- TASK-005 ✅ Савелий: favicon/OG/robots/manifest (принято; og: на превью обрезано «ГАРАЖ МО», название есть в плашке)
+- TASK-006 🔨 Феофан: юр. часть, privacy.html, legal/*
 - TASK-003 ⏸ приёмка прорабом: скриншоты 320/768/1920, форма, консоль
 
 ## Решения

@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# TODO: домен пока неизвестен, добавить после запуска:
+# Sitemap: https://DOMAIN/sitemap.xml
