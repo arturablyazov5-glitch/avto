@@ -19,7 +19,7 @@
 Трифон | Claude opus 5.5 | FAQ, согласие, подвал-реквизиты, cookie, <head> | слито | ✅
 Спиридон | Claude opus 5.5 | ревью текстов по правилам Главреда | design-research/copy-review.md (index.html только читает) | 🔨
 Афанасий | Claude sonnet 5.5 | логотипы WhatsApp/Яндекс Карты с trace-logos.ru (hotlink) | index.html | 🔨
-Виссарион | Claude sonnet 5.5 | исследование «нейрослоп» | design-research/slop-catalog.md | 🔨
+Виссарион | Claude sonnet 5.5 | исследование «нейрослоп» | design-research/slop-catalog.md | ✅ принято (19 источников, 16 открыты; выводы про «бирюзу на графите» помечены как вывод автора)
 Епифаний | Claude sonnet 5.5 | референсы живых сайтов автосервисов | design-research/references.md | 🔨
 Прокопий | Claude opus 5.5 | аудит нашей страницы на слоп | design-research/audit.md | 🔨
 Харитон | Claude sonnet 5.5 | скрипт приёмки accept.js | scratchpad/accept/ | ✅
