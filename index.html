@@ -26,11 +26,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Вибростенд Гараж Молл — диагностика подвески и ремонт ходовой в Краснодаре</title>
-<meta name="description" content="Автосервис «Вибростенд Гараж Молл», Краснодар, пос. Индустриальный, Евдокимовская, 4. Диагностика подвески на вибростенде — от 3 000 ₽, ремонт ходовой, замена масла, проточка тормозных дисков, диагностика электрики. 5,0 · 40 оценок на Яндекс Картах.">
+<title>Вибростенд Гараж Молл — автосервис в Краснодаре</title>
+<meta name="description" content="Вибростенд Гараж Молл, пос. Индустриальный, Краснодар: диагностика подвески от 3 000 ₽, замена масла от 500 ₽, ремонт ходовой от 2 000 ₽. +7 953 097 77 90">
 <!-- TODO: заменить на боевой домен -->
 <link rel="canonical" href="https://DOMAIN/">
-<meta name="theme-color" content="#111417">
+<meta name="theme-color" content="#1C1E21">
 <meta name="format-detection" content="telephone=no">
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -40,8 +40,8 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ru_RU">
 <meta property="og:site_name" content="Вибростенд Гараж Молл">
-<meta property="og:title" content="Вибростенд Гараж Молл — диагностика подвески и ремонт ходовой в Краснодаре">
-<meta property="og:description" content="Диагностика подвески на вибростенде, ремонт ходовой, замена масла, проточка тормозных дисков. 5,0 · 40 оценок на Яндекс Картах, 30 отзывов.">
+<meta property="og:title" content="Вибростенд Гараж Молл — автосервис в Краснодаре">
+<meta property="og:description" content="Вибростенд Гараж Молл, пос. Индустриальный, Краснодар: диагностика подвески от 3 000 ₽, замена масла от 500 ₽, ремонт ходовой от 2 000 ₽. +7 953 097 77 90">
 <meta property="og:url" content="https://DOMAIN/">
 <meta property="og:image" content="https://DOMAIN/og.jpg">
 <meta property="og:image:alt" content="Фасад автосервиса «Вибростенд Гараж Молл» с вывеской">
@@ -86,16 +86,18 @@
 }
 </script>
 
-<!-- Яндекс.Метрика: раскомментировать, подставить номер счётчика вместо 00000000 и тот же номер в YM_ID (JS внизу).
+<!-- Яндекс.Метрика: ЗДЕСЬ НЕ РАСКОММЕНТИРОВАТЬ — счётчик запустился бы до согласия на cookie (legal/cookie-notice.md).
+     Рабочий код загрузки — в функции initCookieConsent() в конце <script> внизу: он выполняется только после «Принять».
+     Там заменить XXXXXXXX на номер счётчика и тот же номер подставить в YM_ID. Блок ниже — только справка.
      Цели уже вызываются из JS через goal(): 'phone_click', 'whatsapp_click', 'form_submit' — создайте их в Метрике
      как «JavaScript-событие» с такими же идентификаторами.
 <script>
   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
   m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-  ym(00000000, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true });
+  ym(XXXXXXXX, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:false });
 </script>
-<noscript><div><img src="https://mc.yandex.ru/watch/00000000" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+(noscript-пиксель Метрики не использовать: он срабатывает без согласия.)
 -->
 
 <style>
@@ -552,6 +554,40 @@ ul,ol{margin:0;padding:0;list-style:none}
   *,*::before,*::after{transition-duration:.01ms!important;animation:none!important}
   .js .rv{opacity:1;transform:none}
 }
+
+/* ===== TASK-012: FAQ, cookie-баннер, информация об исполнителе ===== */
+.faq-list{display:grid;gap:12px;max-width:860px}
+.faq-item{background:var(--card);border:1px solid var(--line);border-radius:var(--r);transition:border-color .2s var(--ease)}
+.faq-item[open]{border-color:var(--line-2)}
+.faq-q{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:56px;padding:16px 18px;
+  font:600 17px/1.35 var(--text);color:var(--fg);border-radius:var(--r);transition:color .2s var(--ease)}
+.faq-q::-webkit-details-marker{display:none}
+.faq-q::after{content:"";flex:none;width:10px;height:10px;margin-right:4px;border-right:2px solid var(--accent);border-bottom:2px solid var(--accent);
+  transform:translateY(-3px) rotate(45deg);transition:transform .25s var(--ease)}
+.faq-item[open] .faq-q::after{transform:translateY(3px) rotate(-135deg)}
+.faq-q:hover{color:var(--accent-2)}
+.faq-q:focus-visible{outline-offset:-3px}
+.faq-a{padding:0 18px 18px;color:var(--fg-2);font-size:16px}
+@media (min-width:768px){.faq-q{padding:20px 24px;font-size:18px}.faq-a{padding:0 24px 22px;font-size:17px}}
+
+.gm-req{display:grid;gap:12px 32px;margin-top:24px;padding-top:24px;border-top:1px solid var(--line);font-size:14px;line-height:1.6}
+.gm-req h2{font:600 16px/1.3 var(--text);letter-spacing:0;color:var(--fg)}
+.gm-req p{overflow-wrap:anywhere}
+.gm-req b{color:var(--fg-2);font-weight:600}
+.gm-req__note{font-size:13px}
+.footer .gm-req a{padding-block:0;line-height:inherit;display:inline;text-decoration:underline;text-underline-offset:3px}
+.footer .gm-req .gm-req__policy{display:inline-block;padding-block:12px}
+@media (min-width:768px){.gm-req{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.gm-req__wide{grid-column:1/-1}}
+
+/* Cookie-баннер: на мобилке стоит над плавающей кнопкой звонка (.fab ≈ 54px + 12px отступ), не перекрывает её */
+.cookie{position:fixed;z-index:70;left:var(--gutter);right:var(--gutter);bottom:calc(84px + env(safe-area-inset-bottom));max-width:560px;margin-inline:auto;
+  padding:14px 16px;background:var(--card-2);color:var(--fg);border:1px solid var(--line-2);border-left:3px solid var(--accent);border-radius:var(--r);
+  box-shadow:0 14px 34px -8px rgba(0,0,0,.7);font-size:14px;line-height:1.5}
+.cookie[hidden]{display:none}
+.cookie-text{margin-bottom:10px;color:var(--fg-2)}
+.cookie-btns{display:flex;gap:8px}
+.cookie-btns .btn{flex:1 1 0;min-width:0;min-height:44px;padding:6px 10px;font-size:15px;line-height:1.15}
+@media (min-width:768px){.cookie{bottom:calc(24px + env(safe-area-inset-bottom))}}
 </style>
 </head>
 <body>
@@ -589,6 +625,7 @@ ul,ol{margin:0;padding:0;list-style:none}
       <a href="#work">Видео</a>
       <a href="#reviews">Отзывы</a>
       <a href="#lead">Запись</a>
+      <a href="#faq">Вопросы</a>
       <a href="#contacts">Контакты</a>
     </nav>
     <div class="header__cta">
@@ -890,13 +927,53 @@ ul,ol{margin:0;padding:0;list-style:none}
           <div class="consent">
             <div class="consent__row">
               <input id="f-consent" name="consent" type="checkbox" required aria-describedby="e-consent">
-              <label for="f-consent">Согласен на обработку персональных данных для связи по заявке</label>
+              <label for="f-consent">Я даю согласие на обработку персональных данных и ознакомлен(а) с <a href="privacy.html" target="_blank" rel="noopener">политикой обработки персональных данных</a>.</label>
             </div>
             <p class="err" id="e-consent" aria-live="polite"></p>
           </div>
           <button class="btn btn--primary" type="submit">Оставить заявку<svg class="ico ico-arrow" aria-hidden="true"><use href="#i-arrow"/></svg></button>
           <div class="form-msg" id="form-msg" role="status" tabindex="-1" hidden></div>
         </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section faq" id="faq" aria-labelledby="faq-title">
+    <div class="wrap">
+      <div class="head rv">
+        <span class="kicker">Вопросы</span>
+        <h2 id="faq-title">Вопросы об автосервисе и диагностике подвески</h2>
+      </div>
+      <div class="faq-list rv">
+        <details class="faq-item">
+          <summary class="faq-q">Что такое вибростенд и зачем он нужен?</summary>
+          <div class="faq-a"><p>Вибростенд это стенд, который раскачивает колёса автомобиля; по результатам колебаний можно судить о состоянии подвески и искать источник стука. Диагностика подвески на вибростенде в «Вибростенд Гараж Молл» стоит от 3 000 ₽. Итоговая стоимость зависит от автомобиля и объёма работ, точнее скажут по телефону <a class="js-call" data-phone="text" href="tel:+79530977790">+7 953 097 77 90</a>.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">Сколько стоят услуги?</summary>
+          <div class="faq-a"><p>Цены от: замена масла от 500 ₽, ремонт ходовой от 2 000 ₽, диагностика подвески на вибростенде от 3 000 ₽, проточка тормозных дисков от 4 000 ₽. Итоговая стоимость зависит от автомобиля и объёма работ, точнее скажут по телефону. Диагностика электрики: стоимость уточняйте по телефону.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">В подвеске появился стук или скрип, что делать?</summary>
+          <div class="faq-a"><p>Такие симптомы могут быть связаны с состоянием подвески, точную причину определяет осмотр и диагностика. Для этого подходит диагностика подвески на вибростенде или диагностика ходовой части. Нужна другая работа? Позвоните, подскажем.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">Какие автомобили обслуживаются?</summary>
+          <div class="faq-a"><p>По данным карточки на Яндекс Картах: легковые автомобили, отечественные и импортные. Возможность работы с вашей моделью лучше уточнить по телефону.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">Можно ли проточить тормозные диски?</summary>
+          <div class="faq-a"><p>Не всегда: это зависит от износа и минимальной допустимой толщины диска, которую указывает производитель. Если диск слишком тонкий или повреждён, его меняют. Решение принимают после осмотра. Проточка тормозных дисков от 4 000 ₽, итоговая стоимость зависит от автомобиля и объёма работ.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">Какая оплата и есть ли парковка?</summary>
+          <div class="faq-a"><p>Оплата картой, есть парковка и туалет, можно с собакой, есть подарочный сертификат.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">Как приехать и когда вы работаете?</summary>
+          <div class="faq-a"><p>Адрес: пос. Индустриальный, Евдокимовская ул., 4, Краснодар. Работаем ежедневно с 09:00 до 20:00. Телефон <a class="js-call" data-phone="text" href="tel:+79530977790">+7 953 097 77 90</a>, есть <a class="js-wa" data-wa href="https://wa.me/79530977790" target="_blank" rel="noopener">WhatsApp</a>. На Яндекс Картах кнопка <a href="https://yandex.ru/maps/org/205484445084" target="_blank" rel="noopener">«Как доехать»</a>.</p></div>
+        </details>
       </div>
     </div>
   </section>
@@ -950,12 +1027,48 @@ ul,ol{margin:0;padding:0;list-style:none}
         <a href="#top">Наверх</a>
       </nav>
     </div>
+    <!-- Информация об исполнителе (legal/requisites-block.html). Плейсхолдеры [В СКОБКАХ] заполняет владелец, оставить ОДИН вариант: ИП или ООО. -->
+    <section class="gm-req" aria-labelledby="gm-req-title">
+      <h2 id="gm-req-title" class="gm-req__wide">Информация об исполнителе</h2>
+      <div>
+        <!-- Вариант ИП -->
+        <p><b>Исполнитель:</b> индивидуальный предприниматель [ФАМИЛИЯ ИМЯ ОТЧЕСТВО]</p>
+        <p><b>ОГРНИП:</b> [ОГРНИП], <b>ИНН:</b> [ИНН]</p>
+        <p>Зарегистрирован [ДАТА РЕГИСТРАЦИИ ИП], [НАИМЕНОВАНИЕ ЗАРЕГИСТРИРОВАВШЕГО ОРГАНА — инспекция ФНС из листа записи ЕГРИП]</p>
+        <!-- Вариант ООО (удалить блок ИП выше)
+        <p><b>Исполнитель:</b> [ПОЛНОЕ ФИРМЕННОЕ НАИМЕНОВАНИЕ, напр. ООО «…»]</p>
+        <p><b>ОГРН:</b> [ОГРН], <b>ИНН:</b> [ИНН]</p>
+        <p><b>Место нахождения:</b> [ЮРИДИЧЕСКИЙ АДРЕС ИЗ ЕГРЮЛ]</p>
+        -->
+      </div>
+      <div>
+        <p><b>Автосервис «Вибростенд Гараж Молл»:</b> г. Краснодар, пос. Индустриальный, Евдокимовская ул., 4</p>
+        <p><b>Режим работы:</b> ежедневно 09:00–20:00</p>
+        <p><b>Телефон:</b> <a class="js-call" data-phone="text" href="tel:+79530977790">+7 953 097 77 90</a></p>
+        <p><b>Email:</b> [EMAIL ДЛЯ ОБРАЩЕНИЙ]</p>
+      </div>
+      <div class="gm-req__wide">
+        <p>Цены на сайте указаны в рублях как минимальная стоимость («от»), без стоимости запасных частей и материалов. Окончательная стоимость определяется после осмотра (диагностики) автомобиля и согласовывается с клиентом в договоре (заказ-наряде) до начала работ. Сайт носит информационный характер и не является публичной офертой (ст. 437 ГК РФ).</p>
+        <p>Полный перечень услуг и цен, Правила оказания услуг по ТО и ремонту автомототранспортных средств (постановление Правительства РФ от 29.05.2025 № 780), образцы договора и заказ-наряда, адрес и телефон территориального органа Роспотребнадзора доступны для ознакомления в автосервисе.</p>
+        <p><a class="gm-req__policy" href="privacy.html">Политика обработки персональных данных</a></p>
+        <p class="gm-req__note">Рейтинг и отзывы приведены по данным <a href="https://yandex.ru/maps/org/205484445084" target="_blank" rel="noopener">карточки организации на Яндекс Картах</a> на [ДАТА СВЕРКИ РЕЙТИНГА].</p>
+      </div>
+    </section>
   </div>
 </footer>
 
 <div class="fab" id="fab">
   <a class="btn btn--primary js-call" data-phone href="tel:+79530977790"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg>Позвонить</a>
   <a class="btn btn--wa js-wa" data-wa href="https://wa.me/79530977790" target="_blank" rel="noopener" aria-label="Написать в WhatsApp"><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg></a>
+</div>
+
+<!-- Cookie-баннер (legal/cookie-notice.md). Показывается из JS, пока нет сохранённого выбора. -->
+<div class="cookie" id="cookie" role="region" aria-label="Уведомление о cookie" hidden>
+  <p class="cookie-text">Мы используем cookie и Яндекс Метрику, чтобы считать посещения и улучшать сайт. Подробнее — в <a href="privacy.html">политике обработки персональных данных</a>.</p>
+  <div class="cookie-btns">
+    <button class="btn btn--primary" type="button" data-cookie="all">Принять</button>
+    <button class="btn btn--ghost" type="button" data-cookie="necessary">Только необходимые</button>
+  </div>
 </div>
 
 <script>
@@ -1153,6 +1266,37 @@ ul,ol{margin:0;padding:0;list-style:none}
     var el = document.querySelector(s); if (el) fabIo.observe(el);
   });
 })();
+
+/* ===== Cookie-баннер и запуск Яндекс Метрики только после «Принять» (legal/cookie-notice.md) ===== */
+function initCookieConsent() {
+  var KEY = 'gm_cookie_v1';                 // 'all' | 'necessary'
+  var box = document.getElementById('cookie');
+  function get() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+  function set(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
+  function loadMetrika() {
+    if (window.ym) return;
+    /* ЯНДЕКС МЕТРИКА — ЗАГЛУШКА. Раскомментировать, заменить XXXXXXXX на номер счётчика и тот же номер подставить в YM_ID выше.
+       Webvisor не включать без запрета записи полей формы (legal/cookie-notice.md).
+    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+      m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0];k.async=1;k.src=r;a.parentNode.insertBefore(k,a)})
+      (window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js', 'ym');
+    window.ym(XXXXXXXX, 'init', { clickmap: true, trackLinks: true, accurateTrackBounce: true, webvisor: false });
+    */
+  }
+  var choice = get();
+  if (choice === 'all') loadMetrika();
+  if (!box) return;
+  if (!choice) box.hidden = false;
+  box.addEventListener('click', function (ev) {
+    var b = ev.target.closest && ev.target.closest('[data-cookie]');
+    if (!b) return;
+    var v = b.getAttribute('data-cookie');
+    set(v);
+    box.hidden = true;
+    if (v === 'all') loadMetrika();
+  });
+}
+initCookieConsent();
 </script>
 </body>
 </html>
