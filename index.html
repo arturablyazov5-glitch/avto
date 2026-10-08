@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>[Название автосервиса] — ремонт авто в Краснодаре</title>
+<meta name="description" content="Ремонт и обслуживание автомобилей в Краснодаре: диагностика, ТО, ходовая, двигатель. Запись по телефону.">
+<style>
+:root{--bg:#fff;--fg:#1c1f24;--muted:#5d6570;--accent:#e8590c;--card:#f5f6f8;--line:#e3e6ea}
+@media (prefers-color-scheme:dark){:root{--bg:#14161a;--fg:#eceef1;--muted:#9aa3ad;--card:#1d2026;--line:#2b3037}}
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--fg)}
+.wrap{max-width:1000px;margin:0 auto;padding:0 16px}
+header{border-bottom:1px solid var(--line)}
+header .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 16px}
+.logo{font-weight:700;font-size:18px}
+.tel{font-weight:700;color:var(--accent);text-decoration:none;white-space:nowrap}
+.hero{padding:56px 0 40px}
+h1{font-size:clamp(28px,5vw,44px);line-height:1.15;margin:0 0 14px}
+.hero p{color:var(--muted);max-width:620px;margin:0 0 24px;font-size:18px}
+.btn{display:inline-block;background:var(--accent);color:#fff;border:0;padding:14px 26px;border-radius:8px;font-size:16px;font-weight:600;text-decoration:none;cursor:pointer}
+section{padding:36px 0}
+h2{font-size:26px;margin:0 0 20px}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px}
+.card h3{margin:0 0 6px;font-size:17px}
+.card p{margin:0;color:var(--muted);font-size:15px}
+.price{margin-top:10px;font-weight:700}
+form{display:grid;gap:12px;max-width:420px}
+input,select{padding:12px;border:1px solid var(--line);border-radius:8px;font:inherit;background:var(--bg);color:var(--fg)}
+.note{font-size:13px;color:var(--muted)}
+footer{border-top:1px solid var(--line);padding:24px 0;color:var(--muted);font-size:14px}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <div class="logo">[Название автосервиса]</div>
+  <a class="tel" href="tel:+7XXXXXXXXXX">+7 (XXX) XXX-XX-XX</a>
+</div></header>
+
+<main>
+<div class="wrap">
+  <div class="hero">
+    <h1>Ремонт и обслуживание авто в Краснодаре</h1>
+    <p>Диагностика, плановое ТО, ходовая, двигатель, электрика. Согласуем стоимость до начала работ.</p>
+    <a class="btn" href="#order">Записаться на диагностику</a>
+  </div>
+
+  <section>
+    <h2>Услуги</h2>
+    <div class="grid">
+      <div class="card"><h3>Диагностика</h3><p>Компьютерная и ходовой части, выясняем причину неисправности.</p><div class="price">от [ХХХ] ₽</div></div>
+      <div class="card"><h3>Плановое ТО</h3><p>Масло, фильтры, свечи, жидкости по регламенту производителя.</p><div class="price">от [ХХХ] ₽</div></div>
+      <div class="card"><h3>Ходовая часть</h3><p>Подвеска, рулевое, тормозная система, развал-схождение.</p><div class="price">от [ХХХ] ₽</div></div>
+      <div class="card"><h3>Двигатель и КПП</h3><p>Ремонт, замена ремня и цепи ГРМ, сцепление.</p><div class="price">от [ХХХ] ₽</div></div>
+      <div class="card"><h3>Электрика</h3><p>Поиск и устранение неисправностей проводки и датчиков.</p><div class="price">от [ХХХ] ₽</div></div>
+      <div class="card"><h3>Кондиционер</h3><p>Заправка, диагностика утечек, чистка салона.</p><div class="price">от [ХХХ] ₽</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Как мы работаем</h2>
+    <div class="grid">
+      <div class="card"><h3>1. Заявка</h3><p>Звоните или оставьте номер, мы перезвоним.</p></div>
+      <div class="card"><h3>2. Диагностика</h3><p>Определяем неисправность и называем цену.</p></div>
+      <div class="card"><h3>3. Согласование</h3><p>Работы начинаем только после вашего согласия.</p></div>
+      <div class="card"><h3>4. Ремонт и гарантия</h3><p>Выдаём акт работ и гарантию [срок].</p></div>
+    </div>
+  </section>
+
+  <section id="order">
+    <h2>Запись на обслуживание</h2>
+    <form action="[URL-обработчика]" method="post">
+      <input name="name" placeholder="Имя" required>
+      <input name="phone" type="tel" placeholder="Телефон" required>
+      <input name="car" placeholder="Марка и модель авто">
+      <button class="btn" type="submit">Отправить заявку</button>
+      <span class="note">Нажимая кнопку, вы соглашаетесь с <a href="#">политикой обработки персональных данных</a>.</span>
+    </form>
+  </section>
+</div>
+</main>
+
+<footer><div class="wrap">
+  [Юрлицо / ИП, ИНН, ОГРНИП] · Краснодар, [адрес] · Ежедневно [часы работы]
+</div></footer>
+</body>
+</html>
